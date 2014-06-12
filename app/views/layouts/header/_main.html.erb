@@ -18,12 +18,9 @@
         <div class="navbar-collapse collapse">
             
           <!-- Main Navigation -->
-          <% # render_navigation(:expand_all => true) %>
+          <%= render_navigation :expand_all => true %>
           
-          <!-- Search -->
-          <form class="navbar-form navbar-left" action="/search">
-              <input type="text" class="form-control col-lg-8" placeholder="Search" id="q" name="q" value="<%= search_value %>">
-          </form>
+          <!-- search here -->
           
           <!-- User Stuff -->
           <% # render 'layouts/header/user' %>
