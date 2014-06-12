@@ -1,0 +1,2 @@
+// Namespace
+var Antiquarium = Antiquarium || {};

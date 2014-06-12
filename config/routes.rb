@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   
   
   # Artifacts
-  resources :artifacts
+  resources :artifacts do
+    resources :photos
+  end
+  
+  
+  # Photos
+  resources :photos
   
 end

@@ -1,0 +1,54 @@
+<div class="row">
+    <!-- Name -->
+    <div class="col-lg-9">
+        <h2><%= @artifact.name %></h2>
+    </div>
+    <div class="col-lg-3">
+        <br/>
+        <div class="pull-right">
+            <a href="#" class="btn btn-warning btn-sm">
+                <span class="glyphicon glyphicon-eye-close"></span> 
+                Unpublish
+            </a>
+            <a href="#" class="btn btn-danger btn-sm">
+                <span class="glyphicon glyphicon-remove"></span> 
+                Delete
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    
+    <!-- Breadcrumb -->
+    <div class="col-lg-8">
+        <ol class="breadcrumb">
+            <li>
+                <%= link_to root_path do %>
+                    <span class="glyphicon glyphicon-home"></span>
+                <% end %>
+            </li>
+            <li><a href="#">Database</a></li>
+            <li><%= link_to 'Artifacts', artifacts_path %></li>
+            <li class="active"><%= @artifact.name %></li>
+        </ol>
+
+        <p><%= @artifact.description %></p>
+    </div>
+
+    <!-- Photos -->
+    <%= render partial: 'artifacts/show/photos', object: @artifact %>
+
+</div>
+
+<div class="row">
+
+    <!-- Events -->
+    <%= render partial: 'artifacts/show/events', object: @artifact %>
+
+    <!-- Properties -->
+    <%= render partial: 'artifacts/show/properties', object: @artifact %>
+    
+</div>
+
+<%= render 'artifacts/show/upload_photo' %>
