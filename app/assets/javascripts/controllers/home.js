@@ -2,8 +2,9 @@
  * Antiquarium Controller
  * Home
  */
-Antiquarium.Controller["home"] = function() {
+Antiquarium.Controller["home"] = {
   
   // Nothing
+  index: function() {}
   
-}
+};

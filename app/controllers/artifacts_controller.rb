@@ -26,6 +26,9 @@ class ArtifactsController < ApplicationController
   end
   
   def update
+    @artifact = Artifact.find_by_uuid(params[:id])
+    @artifact.update_attributes(params[:name] => params[:value])
+    render nothing: true
   end
   
   def destroy

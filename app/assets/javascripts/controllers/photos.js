@@ -2,8 +2,32 @@
  * Antiquarium Controller
  * Photos
  */
-Antiquarium.Controller["photos"] = function() {
+Antiquarium.Controller["photos"] = {
   
-  // Nothing
+  /**
+   * #index
+   */
+  index: function() {},
   
-}
+  
+  
+  /**
+   * #new
+   */
+  new: function() {},
+  
+  
+  
+  /**
+   * #show
+   */
+  show: function() {},
+  
+  
+  
+  /**
+   * #edit
+   */
+  edit: function() {},
+  
+};
