@@ -1,8 +1,9 @@
 /*
  * Antiquarium CSS
  * 
- * require_self
+ *= require_self
  *= require flatly.min.css
+ *= require fonts
  */
 
 /* require select2.css
