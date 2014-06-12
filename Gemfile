@@ -21,6 +21,7 @@ gem 'simple_navigation_renderers'
 
 # Files
 gem 'carrierwave'
+gem 'cloudinary'
 
 
 # Docs
