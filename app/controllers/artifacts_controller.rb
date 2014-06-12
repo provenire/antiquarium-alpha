@@ -4,6 +4,7 @@ class ArtifactsController < ApplicationController
   end
   
   def show
+    @artifact = Artifact.find_by_uuid!(params[:id])
   end
   
   def new
@@ -15,7 +16,7 @@ class ArtifactsController < ApplicationController
     params[:artifact]["alternate_names"] = params[:artifact]["alternate_names"].split(",").map(&:strip)
     
     # Make the artifact
-    @artifact = Artifact.new(params[:artifact])
+    @artifact = Artifact.new(artifact_params)
     
     # Redirect
     redirect_to @artifact if @artifact.save
@@ -28,6 +29,14 @@ class ArtifactsController < ApplicationController
   end
   
   def destroy
+  end
+  
+  
+  # Params
+  private
+
+  def artifact_params
+    params.require(:artifact).permit(:name, :alternate_names, :description, :artist, :dimensions, :date_created)
   end
   
 end

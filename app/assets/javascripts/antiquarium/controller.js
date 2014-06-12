@@ -1,0 +1,4 @@
+/**
+ * Antiquarium Controller
+ */
+Antiquarium.Controller = {};
