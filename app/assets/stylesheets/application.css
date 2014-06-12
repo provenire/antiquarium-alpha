@@ -3,11 +3,9 @@
  * 
  *= require_self
  *= require flatly.min.css
- */
-
-/* require select2.css
- * require select2-bootstrap.css
- * require bootstrap-editable.css
+ *= require select2.css
+ *= require select2-bootstrap.css
+ *= require bootstrap-editable.css
  */
 
 .navbar-static-top {

@@ -23,7 +23,7 @@
             <dt>Artist</dt>
             <dd>
                 <% if editable_object? @artifact %>
-                    <span id="artist_editable"
+                    <span id="artist"
                         data-type="text"
                         data-pk=<%= @artifact.uuid %>
                         data-url="/artifacts/<%= @artifact.uuid %>"
@@ -40,7 +40,7 @@
             <dt>Date Created</dt>
             <dd>
                 <% if editable_object? @artifact %>
-                    <span id="date_created_editable"
+                    <span id="date_created"
                         data-type="text"
                         data-pk=<%= @artifact.uuid %>
                         data-url="/artifacts/<%= @artifact.uuid %>"

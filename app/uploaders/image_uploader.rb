@@ -4,6 +4,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
   
   process :convert => 'jpg'
+  process :tags => ['antiquarium']
   
   version :object_single do
     process :eager => true
