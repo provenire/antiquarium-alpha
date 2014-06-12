@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Antiquarium</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <%= render 'layouts/head' %>
+  
+  <body>
 
-<%= yield %>
-
-</body>
+    <!-- Start Page Content -->
+    <div class="container">
+      
+      <%= yield %>
+    
+      <!-- Footer -->
+  		<%= render 'layouts/footer' %>
+    </div>
+    <!-- End Page Content -->
+    
+		<!-- Javascripts -->
+    <%= render 'layouts/javascripts' %>
+    
+  </body>
 </html>
