@@ -19,6 +19,10 @@ gem 'simple-navigation'
 gem 'simple_navigation_renderers'
 
 
+# Files
+gem 'carrierwave'
+
+
 # Docs
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
