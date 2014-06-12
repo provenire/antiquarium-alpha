@@ -9,6 +9,10 @@ class Artifact < ActiveRecord::Base
   #  - date_created
   
   
+  # Relations
+  has_and_belongs_to_many :photos
+  
+  
   
   # Generate a UUID on create
   before_create do |artifact|
