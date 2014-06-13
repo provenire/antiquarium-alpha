@@ -5,13 +5,6 @@
 Antiquarium.Controller["artifacts"] = {
   
   /**
-   * #index
-   */
-  index: function() {},
-  
-  
-  
-  /**
    * #new
    */
   new: function() {
