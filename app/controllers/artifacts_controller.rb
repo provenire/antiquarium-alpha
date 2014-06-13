@@ -1,6 +1,7 @@
 class ArtifactsController < ApplicationController
   
   def index
+    @artifacts = Artifact.order(:name).page params[:page]
   end
   
   def show
@@ -12,9 +13,6 @@ class ArtifactsController < ApplicationController
   end
   
   def create
-    # Convert alternate names to array
-    params[:artifact]["alternate_names"] = params[:artifact]["alternate_names"].split(",").map(&:strip)
-    
     # Make the artifact
     @artifact = Artifact.new(artifact_params)
     
@@ -39,7 +37,9 @@ class ArtifactsController < ApplicationController
   private
 
   def artifact_params
-    params.require(:artifact).permit(:name, :alternate_names, :description, :artist, :dimensions, :date_created)
+    # Convert alternate names to array
+    params[:artifact][:alternate_names] = params[:artifact][:alternate_names].split(",").map(&:strip)
+    params.require(:artifact).permit(:name, {:alternate_names => []}, :description, :artist, :dimensions, :date_created)
   end
   
 end

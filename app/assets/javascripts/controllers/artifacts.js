@@ -23,9 +23,10 @@ Antiquarium.Controller["artifacts"] = {
         tokenSeparators: [","]
       }
     });
-    $('#alternate_names_editable').editable();
+    $('#alternate_names').editable();
     $('#date_created').editable();
     $('#artist').editable();
+    $('#dimensions').editable();
   
     Antiquarium.Common.cloudinaryUpload();
   }

@@ -14,6 +14,10 @@ class Artifact < ActiveRecord::Base
   
   
   # Helpers
+  def names
+    self.alternate_names || []
+  end
+  
   def active?
     self.published==true
   end
