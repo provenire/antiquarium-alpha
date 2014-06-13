@@ -2,7 +2,7 @@
  * Antiquarium CSS
  * 
  *= require_self
- *= require flatly.min.css
+ *= require flatly
  *= require select2.css
  *= require select2-bootstrap.css
  *= require bootstrap-editable.css
