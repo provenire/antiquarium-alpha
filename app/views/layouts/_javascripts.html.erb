@@ -3,5 +3,5 @@
 
 <!-- Run Controller Code -->
 <script>
-    $(document).ready(Antiquarium.Controller["<%= params[:controller] %>"].<%= params[:action] %>);
+  $(document).ready(Antiquarium.run("<%= params[:controller] %>","<%= params[:action] %>"));
 </script>
