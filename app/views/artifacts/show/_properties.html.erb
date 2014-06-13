@@ -2,56 +2,65 @@
     <h3>Properties</h3>
     <dl class="dl-horizontal">
         
-        <% if @artifact.alternate_names && @artifact.alternate_names.size > 0 %>
-            <dt>Alternate Names</dt>
-            <dd>
-                <% if editable_object? @artifact %>
-                    <span id="alternate_names_editable"
-                        data-type="text"
-                        data-pk=<%= @artifact.uuid %>
-                        data-url="/artifacts/<%= @artifact.uuid %>"
-                        data-title="Alternate Names">
-                        <%= @artifact.alternate_names.join(", ") %>
-                    </span>
-                <% else %>
-                    <%= @artifact.alternate_names.join(", ") %>
-                <% end %>
-            </dd>
-        <% end %>
+        <dt>Alternate Names</dt>
+        <dd>
+            <% if editable_object? @artifact %>
+                <span id="alternate_names"
+                    data-type="text"
+                    data-pk=<%= @artifact.uuid %>
+                    data-url="/artifacts/<%= @artifact.uuid %>"
+                    data-title="Alternate Names">
+                    <%= @artifact.names.join(", ") %>
+                </span>
+            <% else %>
+                <%= @artifact.names.join(", ") %>
+            <% end %>
+        </dd>
         
-        <% if @artifact.artist %>
-            <dt>Artist</dt>
-            <dd>
-                <% if editable_object? @artifact %>
-                    <span id="artist"
-                        data-type="text"
-                        data-pk=<%= @artifact.uuid %>
-                        data-url="/artifacts/<%= @artifact.uuid %>"
-                        data-title="Artist">
-                        <%= @artifact.artist %>
-                    </span>
-                <% else %>
+        <dt>Artist</dt>
+        <dd>
+            <% if editable_object? @artifact %>
+                <span id="artist"
+                    data-type="text"
+                    data-pk=<%= @artifact.uuid %>
+                    data-url="/artifacts/<%= @artifact.uuid %>"
+                    data-title="Artist">
                     <%= @artifact.artist %>
-                <% end %>
-            </dd>
-        <% end %>
+                </span>
+            <% else %>
+                <%= @artifact.artist %>
+            <% end %>
+        </dd>
         
-        <% if @artifact.date_created %>
-            <dt>Date Created</dt>
-            <dd>
-                <% if editable_object? @artifact %>
-                    <span id="date_created"
-                        data-type="text"
-                        data-pk=<%= @artifact.uuid %>
-                        data-url="/artifacts/<%= @artifact.uuid %>"
-                        data-title="Date Created">
-                        <%= @artifact.date_created %>
-                    </span>
-                <% else %>
+        <dt>Date Created</dt>
+        <dd>
+            <% if editable_object? @artifact %>
+                <span id="date_created"
+                    data-type="text"
+                    data-pk=<%= @artifact.uuid %>
+                    data-url="/artifacts/<%= @artifact.uuid %>"
+                    data-title="Date Created">
                     <%= @artifact.date_created %>
-                <% end %>
-            </dd>
-        <% end %>
+                </span>
+            <% else %>
+                <%= @artifact.date_created %>
+            <% end %>
+        </dd>
+        
+        <dt>Dimensions</dt>
+        <dd>
+            <% if editable_object? @artifact %>
+                <span id="dimensions"
+                    data-type="text"
+                    data-pk=<%= @artifact.uuid %>
+                    data-url="/artifacts/<%= @artifact.uuid %>"
+                    data-title="Dimensions">
+                    <%= @artifact.dimensions %>
+                </span>
+            <% else %>
+                <%= @artifact.dimensions %>
+            <% end %>
+        </dd>
 
     </dl>
 </div>
