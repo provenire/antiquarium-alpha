@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'simple-navigation'
 gem 'simple_navigation_renderers'
 gem 'kaminari'
+gem 'country_select'
 
 
 # Files
