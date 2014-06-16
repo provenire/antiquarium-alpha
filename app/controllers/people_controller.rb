@@ -5,6 +5,7 @@ class PeopleController < ApplicationController
   end
   
   def show
+    @person = Person.find_by_uuid!(params[:id])
   end
   
   def new
@@ -12,10 +13,10 @@ class PeopleController < ApplicationController
   end
   
   def create
-    person = Person.new(person_params)
-    if person.save
-      redirect_to person
-    end
+    @person = Person.new(person_params)
+    
+    # Redirect
+    redirect_to @person if @person.save
   end
   
   def edit

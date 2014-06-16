@@ -1,0 +1,54 @@
+<div class="row">
+  <!-- Name -->
+  <div class="col-lg-9">
+    <h2><%= @person.name %></h2>
+  </div>
+  <div class="col-lg-3">
+    <br/>
+    <div class="pull-right">
+      <a href="#" class="btn btn-warning btn-sm">
+        <span class="glyphicon glyphicon-th-list"></span> 
+        History
+      </a>
+      <a href="#" class="btn btn-danger btn-sm">
+        <span class="glyphicon glyphicon-remove"></span> 
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  
+  <!-- Breadcrumb -->
+  <div class="col-lg-8">
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to root_path do %>
+          <span class="glyphicon glyphicon-home"></span>
+        <% end %>
+      </li>
+      <li><a href="#">Database</a></li>
+      <li><%= link_to 'People', people_path %></li>
+      <li class="active"><%= @person.name %></li>
+    </ol>
+
+    <p><%= @person.description %></p>
+  </div>
+
+  <!-- Photos -->
+  <%= render partial: 'people/show/photos', object: @person %>
+  
+
+</div>
+
+<div class="row">
+  
+  <div class="col-lg-8"></div>
+  
+  <!-- Properties -->
+  <%= render partial: 'people/show/details', object: @person %>
+  
+</div>
+
+<%= render 'people/show/upload_photo' %>
