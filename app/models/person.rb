@@ -8,6 +8,8 @@ class Person < ActiveRecord::Base
   #  - date_of_death
   #  - nationality
   
+  # Relations
+  has_and_belongs_to_many :photos
   
   # Generate a UUID on create
   before_create do |artifact|
