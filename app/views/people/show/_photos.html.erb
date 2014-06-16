@@ -1,0 +1,41 @@
+<div class="col-lg-4">
+  <div class="row">
+    <% if @person.num_photos == 0 %>
+      <div class="col-lg-12">
+        <img data-src="holder.js/360x240/text: No photos available" class="img-responsive">
+      </div>
+    <% elsif @person.num_photos == 1 %>
+      <div class="col-lg-12">
+        <%= link_to @person.default_photo do %>
+          <%= image_tag @person.default_photo.image.object_single.url, class: 'img-responsive' %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-lg-9">
+        <%= link_to @person.default_photo do %>
+          <%= image_tag @person.default_photo.image.object_main.url, class: 'img-responsive' %>
+        <% end %>
+      </div>
+      <div class="col-lg-3">
+        <% @person.next_photos.each do |p| %>
+          <div class="row">
+            <div class="col-lg-12">
+              <%= link_to p do %>
+                <%= image_tag p.image.object_thumb.url, class: 'img-responsive' %>
+              <% end %>
+            </div>
+          </div>
+          <br/>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <% if @person.num_photos > 0 %>
+        <%= link_to "See all #{@person.num_photos} photos", person_photos_path(@person)%> | 
+      <% end %>
+      <a href="#" data-toggle="modal" data-target="#upload_photo_modal">+ Upload new photo</a>
+    </div>
+  </div>
+</div>
