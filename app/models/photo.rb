@@ -10,7 +10,7 @@ class Photo < ActiveRecord::Base
   
   # Relations
   has_and_belongs_to_many :artifacts
-  has_and_belongs_to_mand :people
+  has_and_belongs_to_many :people
   
   
   # Helper Functions
