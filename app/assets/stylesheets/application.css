@@ -1,11 +1,11 @@
 /*
  * Antiquarium CSS
  * 
- *= require_self
  *= require flatly
  *= require select2.css
  *= require select2-bootstrap.css
  *= require bootstrap-editable.css
+ *= require_self
  */
 
 .navbar-static-top {
@@ -14,4 +14,8 @@
 
 #footer {
 	margin-top: 50px;
+}
+
+.description-editable {
+  width: 100%;
 }

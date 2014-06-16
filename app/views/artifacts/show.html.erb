@@ -1,54 +1,86 @@
 <div class="row">
-    <!-- Name -->
-    <div class="col-lg-9">
-        <h2><%= @artifact.name %></h2>
+  <!-- Name -->
+  <div class="col-lg-9">
+    <h2>
+      <% if editable_object? @artifact %>
+        <span id="name"
+          data-type="text"
+          data-pk=<%= @artifact.uuid %>
+          data-url="/artifacts/<%= @artifact.uuid %>"
+          data-title="Name">
+          <%= @artifact.name %> 
+        </span>
+        <button id="edit_name" class="btn btn-xs">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      <% else %>
+        <%= @artifact.name %>
+      <% end %>
+    </h2>
+  </div>
+  <div class="col-lg-3">
+    <br/>
+    <div class="pull-right">
+      <a href="#" class="btn btn-warning btn-sm">
+        <span class="glyphicon glyphicon-th-list"></span> 
+        History
+      </a>
+      <a href="#" class="btn btn-danger btn-sm">
+        <span class="glyphicon glyphicon-remove"></span> 
+        Delete
+      </a>
     </div>
-    <div class="col-lg-3">
-        <br/>
-        <div class="pull-right">
-            <a href="#" class="btn btn-warning btn-sm">
-                <span class="glyphicon glyphicon-th-list"></span> 
-                History
-            </a>
-            <a href="#" class="btn btn-danger btn-sm">
-                <span class="glyphicon glyphicon-remove"></span> 
-                Delete
-            </a>
-        </div>
-    </div>
+  </div>
 </div>
 
 <div class="row">
+  
+  <!-- Breadcrumb -->
+  <div class="col-lg-8">
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to root_path do %>
+          <span class="glyphicon glyphicon-home"></span>
+        <% end %>
+      </li>
+      <li><a href="#">Database</a></li>
+      <li><%= link_to 'Artifacts', artifacts_path %></li>
+      <li class="active"><%= @artifact.name %></li>
+    </ol>
     
-    <!-- Breadcrumb -->
-    <div class="col-lg-8">
-        <ol class="breadcrumb">
-            <li>
-                <%= link_to root_path do %>
-                    <span class="glyphicon glyphicon-home"></span>
-                <% end %>
-            </li>
-            <li><a href="#">Database</a></li>
-            <li><%= link_to 'Artifacts', artifacts_path %></li>
-            <li class="active"><%= @artifact.name %></li>
-        </ol>
+    <% if editable_object? @artifact %>
+      <p id="description"
+        data-type="textarea"
+        data-rows="10"
+        data-pk=<%= @artifact.uuid %>
+        data-url="/artifacts/<%= @artifact.uuid %>"
+        data-title="Description">
+        <%= @artifact.description %>
+      </p>
+      <p>
+        <button id="edit_description" class="btn btn-xs">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </p>
+    <% else %>
+      <p><%= @artifact.description %></p>
+    <% end %>
+    
+  </div>
 
-        <p><%= @artifact.description %></p>
-    </div>
-
-    <!-- Photos -->
-    <%= render partial: 'artifacts/show/photos', object: @artifact %>
+  <!-- Photos -->
+  <%= render partial: 'artifacts/show/photos', object: @artifact %>
 
 </div>
 
 <div class="row">
 
-    <!-- Events -->
-    <%= render partial: 'artifacts/show/events', object: @artifact %>
+  <!-- Events -->
+  <%= render partial: 'artifacts/show/events', object: @artifact %>
 
-    <!-- Properties -->
-    <%= render partial: 'artifacts/show/properties', object: @artifact %>
-    
+  <!-- Properties -->
+  <%= render partial: 'artifacts/show/properties', object: @artifact %>
+  
 </div>
 
 <%= render 'artifacts/show/upload_photo' %>
