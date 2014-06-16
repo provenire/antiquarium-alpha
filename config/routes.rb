@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   end
   
   
+  # People
+  resources :people do
+    resources :photos
+  end
+  
+  
   # Photos
   resources :photos
   
