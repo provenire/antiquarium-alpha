@@ -1,19 +1,19 @@
 ---
 development:
-  cloud_name: zserver
-  api_key: '618129751437753'
-  api_secret: OyeB3UXWTK_fflpeVu4PaQOqCXE
+  cloud_name: antiquarium
+  api_key: '371812777248624'
+  api_secret: NdcbZ8hwYEvUXAcdWy9AqQlgGW0
   enhance_image_tag: true
   static_image_support: false
 production:
-  cloud_name: zserver
-  api_key: '618129751437753'
-  api_secret: OyeB3UXWTK_fflpeVu4PaQOqCXE
+  cloud_name: antiquarium
+  api_key: '371812777248624'
+  api_secret: NdcbZ8hwYEvUXAcdWy9AqQlgGW0
   enhance_image_tag: true
   static_image_support: true
 test:
-  cloud_name: zserver
-  api_key: '618129751437753'
-  api_secret: OyeB3UXWTK_fflpeVu4PaQOqCXE
+  cloud_name: antiquarium
+  api_key: '371812777248624'
+  api_secret: NdcbZ8hwYEvUXAcdWy9AqQlgGW0
   enhance_image_tag: true
   static_image_support: false

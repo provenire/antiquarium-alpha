@@ -73,7 +73,7 @@ class PhotosController < ApplicationController
   private
   
   def photo_params
-    params.require(:photo).permit(:image, :comments)
+    params.require(:photo).permit(:image, :comments, :artifact_uuid, :person_uuid, :place_uuid)
   end
   
 end

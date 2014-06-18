@@ -26,5 +26,6 @@ module Antiquarium
     config.assets.paths << Rails.root.join("vendor","assets", "images")
     
     config.assets.precompile += %w(*.svg *.eot *.woff *.ttf *.png *.gif)
+    
   end
 end
