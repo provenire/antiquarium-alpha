@@ -36,4 +36,6 @@ gem 'spring',        group: :development
 
 # Heroku
 gem 'rails_12factor', group: :production
+gem 'heroku_rails_deflate', :group => :production
+
 ruby "2.1.1"
