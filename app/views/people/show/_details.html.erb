@@ -4,7 +4,7 @@
     <dt>Gender</dt>
     <dd>
       <% if editable_object? @person %>
-        <span id="gender_editable"
+        <span id="gender"
           data-type="select"
           data-pk=<%= @person.uuid %>
           data-url="/people/<%= @person.uuid %>"
@@ -16,56 +16,50 @@
       <% end %>
     </dd>
     
-    <% if @person.nationality %>
-      <dt>Nationality</dt>
-      <dd>
-        <% if editable_object? @person %>
-          <span id="nationality_editable"
-            data-type="select"
-            data-pk=<%= @person.uuid %>
-            data-url="/people/<%= @person.uuid %>"
-            data-title="Nationality">
-            <%= @person.nationality %>
-          </span>
-        <% else %>
+    <dt>Nationality</dt>
+    <dd>
+      <% if editable_object? @person %>
+        <span id="nationality"
+          data-type="select"
+          data-pk=<%= @person.uuid %>
+          data-url="/people/<%= @person.uuid %>"
+          data-title="Nationality">
           <%= @person.nationality %>
-        <% end %>
-      </dd>
-    <% end %>
+        </span>
+      <% else %>
+        <%= @person.nationality %>
+      <% end %>
+    </dd>
     
-    <% if @person.date_of_birth %>
-      <dt>Date of Birth</dt>
-      <dd>
-        <% if editable_object? @person %>
-          <span id="date_of_birth_editable"
-            data-type="combodate"
-            data-pk=<%= @person.uuid %>
-            data-url="/people/<%= @person.uuid %>"
-            data-title="Date of Birth">
-            <%= @person.date_of_birth %>
-          </span>
-        <% else %>
+    <dt>Date of Birth</dt>
+    <dd>
+      <% if editable_object? @person %>
+        <span id="date_of_birth"
+          data-type="combodate"
+          data-pk=<%= @person.uuid %>
+          data-url="/people/<%= @person.uuid %>"
+          data-title="Date of Birth">
           <%= @person.date_of_birth %>
-        <% end %>
-      </dd>
-    <% end %>
+        </span>
+      <% else %>
+        <%= @person.date_of_birth %>
+      <% end %>
+    </dd>
     
-    <% if @person.date_of_death %>
-      <dt>Date of Death</dt>
-      <dd>
-        <% if editable_object? @person %>
-          <span id="date_of_death_editable"
-            data-type="combodate"
-            data-pk=<%= @person.uuid %>
-            data-url="/people/<%= @person.uuid %>"
-            data-title="Date of Death">
-            <%= @person.date_of_death %>
-          </span>
-        <% else %>
+    <dt>Date of Death</dt>
+    <dd>
+      <% if editable_object? @person %>
+        <span id="date_of_death"
+          data-type="combodate"
+          data-pk=<%= @person.uuid %>
+          data-url="/people/<%= @person.uuid %>"
+          data-title="Date of Death">
           <%= @person.date_of_death %>
-        <% end %>
-      </dd>
-    <% end %>
+        </span>
+      <% else %>
+        <%= @person.date_of_death %>
+      <% end %>
+    </dd>
 
   </dl>
 </div>
