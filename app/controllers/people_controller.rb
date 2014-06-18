@@ -22,7 +22,10 @@ class PeopleController < ApplicationController
   def edit
   end
   
-  def create
+  def update
+    @person = Person.find_by_uuid(params[:id])
+    @person.update_attributes(params[:name] => params[:value])
+    render nothing: true
   end
   
   def destroy

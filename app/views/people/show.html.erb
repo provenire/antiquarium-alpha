@@ -1,7 +1,22 @@
 <div class="row">
   <!-- Name -->
   <div class="col-lg-9">
-    <h2><%= @person.name %></h2>
+    <h2>
+      <% if editable_object? @person %>
+        <span id="name"
+          data-type="text"
+          data-pk=<%= @person.uuid %>
+          data-url="/people/<%= @person.uuid %>"
+          data-title="Name">
+          <%= @person.name %> 
+        </span>
+        <button id="edit_name" class="btn btn-xs">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      <% else %>
+        <%= @person.name %>
+      <% end %>
+    </h2>
   </div>
   <div class="col-lg-3">
     <br/>
@@ -32,8 +47,23 @@
       <li><%= link_to 'People', people_path %></li>
       <li class="active"><%= @person.name %></li>
     </ol>
-
-    <p><%= @person.description %></p>
+    <% if editable_object? @person %>
+      <p id="description"
+        data-type="textarea"
+        data-rows="10"
+        data-pk=<%= @person.uuid %>
+        data-url="/people/<%= @person.uuid %>"
+        data-title="Description">
+        <%= @person.description %>
+      </p>
+      <p>
+        <button id="edit_description" class="btn btn-xs">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </p>
+    <% else %>
+      <p><%= @person.description %></p>
+    <% end %>
   </div>
 
   <!-- Photos -->
