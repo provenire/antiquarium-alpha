@@ -15,8 +15,7 @@ gem 'jbuilder', '~> 2.0'
 
 
 # User Interface
-gem 'simple-navigation'
-gem 'simple_navigation_renderers'
+gem 'navigasmic'
 gem 'kaminari'
 gem 'country_select'
 
