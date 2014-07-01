@@ -1,12 +1,8 @@
-class Person < ActiveRecord::Base
-  # Attributes:
+class Place < ActiveRecord::Base
+  # Attributes
   #  - uuid
   #  - name
   #  - description
-  #  - gender
-  #  - date_of_birth
-  #  - date_of_death
-  #  - nationality
   
   
   # UUID Operations
@@ -19,7 +15,7 @@ class Person < ActiveRecord::Base
   
   # Helper functions
   def num_photos
-    self.photos.size
+    return self.photos.size
   end
   
   def default_photo
@@ -28,16 +24,6 @@ class Person < ActiveRecord::Base
   
   def next_photos
     self.photos[1..3]
-  end
-  
-  def age
-    if self.date_of_birth && self.date_of_death
-      return self.date_of_death.year - self.date_of_birth.year
-    elsif self.date_of_birth
-      return Date.today.year - self.date_of_birth.year
-    else
-      return 'Unknown'
-    end
   end
   
   def has_employments?

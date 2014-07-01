@@ -32,8 +32,7 @@ class PhotosController < ApplicationController
       object = Place.find_by_uuid(uuid)
     end
     
-    photo = object.photos.create(photo_params)
-    photo.save
+    @photo = object.photos.create(photo_params)
     redirect_to object
   end
   
@@ -48,7 +47,7 @@ class PhotosController < ApplicationController
     if @photo.update_attributes(photo_params)
       redirect_to @photo
     else
-      render edit_photo_path(@photo)
+      render 'edit'
     end
   end
 
