@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-lg-8">
+        <h2>New Place</h2>
+        <ol class="breadcrumb">
+            <li>
+                <%= link_to root_path do %>
+                    <span class="glyphicon glyphicon-home"></span>
+                <% end %>
+            </li>
+            <li><a href="#">Database</a></li>
+            <li><%= link_to 'Places', places_path %></li>
+            <li class="active">New</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <%= form_for @place do |f| %>
+        
+        <div class="col-lg-6">
+            
+            <div class="form-group">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: 'form-control'%>
+            </div>
+            
+            <div class="form-group">
+                <%= f.label :description %>
+                <%= f.text_area :description, class: 'form-control', rows: 4 %>
+            </div>
+            
+             <%= f.submit "Create", class: 'btn btn-large btn-primary pull-right' %>
+        </div>
+    
+        <div class="col-lg-5 col-lg-offset-1">
+            
+        </div>
+       
+    
+    <% end %>
+    
+</div>

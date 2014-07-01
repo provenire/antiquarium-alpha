@@ -6,7 +6,7 @@ Navigasmic.setup do |config|
     n.group 'Database' do
       n.item '<span class="glyphicon glyphicon-glass"></span> Artifacts',   controller: 'artifacts'
       n.item '<span class="glyphicon glyphicon-user"></span> People',       controller: 'people'
-      #n.item '<span class="glyphicon glyphicon-map-marker"></span> Places', controller: 'places'
+      n.item '<span class="glyphicon glyphicon-map-marker"></span> Places', controller: 'places'
       #n.item '<span class="glyphicon glyphicon-book"></span> Sources',      controller: 'sources'
     end
   end
