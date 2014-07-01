@@ -17,7 +17,11 @@ class ArtifactsController < ApplicationController
     @artifact = Artifact.new(artifact_params)
     
     # Redirect
-    redirect_to @artifact if @artifact.save
+    if @artifact.save
+      redirect_to @artifact
+    else
+      render 'new'
+    end
   end
   
   def edit

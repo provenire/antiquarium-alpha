@@ -9,6 +9,10 @@ class Artifact < ActiveRecord::Base
   #  - date_created
   
   
+  # UUID Operations
+  include UUID
+  
+  
   # Relations
   has_and_belongs_to_many :photos
   
@@ -23,7 +27,7 @@ class Artifact < ActiveRecord::Base
   end
   
   def materials_comma_separated
-    self.materials.map{|m| m.name }.join(", ")
+    self.materials.pluck(:name).join(", ")
   end
   
   def has_events?
@@ -48,18 +52,6 @@ class Artifact < ActiveRecord::Base
   
   def current_status
     self.events.order(:date).last || nil
-  end
-  
-  
-  
-  # Generate a UUID on create
-  before_create do |artifact|
-    artifact.uuid = SecureRandom.uuid
-  end
-  
-  # Proper REST routing
-  def to_param
-    uuid
   end
   
 end

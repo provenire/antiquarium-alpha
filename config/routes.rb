@@ -16,6 +16,12 @@ Rails.application.routes.draw do
   end
   
   
+  # Places
+  resources :places do
+    resources :photos
+  end
+  
+  
   # Photos
   resources :photos
   
