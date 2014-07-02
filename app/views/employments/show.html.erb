@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-lg-8">
+    <h2><%= @employment.person.name %> <small>employed by</small> <%= @employment.place.name %></h2>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to root_path do %>
+          <span class="glyphicon glyphicon-home"></span>
+        <% end %>
+      </li>
+      <li><a href="#">Database</a></li>
+      <li><a href="#">Employments</a></li>
+      <li class="active"><%= @employment.person.name %> employed by <%= @employment.place.name %></li>
+    </ol>
+  </div>
+</div>
+
+
+<div class="row">
+  
+  <div class="col-sm-4">
+    <h3>Place</h3>
+    <span class="glyphicon glyphicon-map-marker"></span> <%= link_to @employment.place.name, @employment.place %>
+    
+    <h3>Person</h3>
+    <span class="glyphicon glyphicon-user"></span> <%= link_to @employment.person.name, @employment.person %>
+  </div>
+  
+  <div class="col-sm-8">
+    <h3>Info</h3>
+    <dl class="dl-horizontal">
+      <dt>Title</dt>
+      <dd><%= @employment.title || "None" %></dd>
+      
+      <dt>Start Date</dt>
+      <dd><%= @employment.start_date || "None" %></dd>
+      
+      <dt>End Date</dt>
+      <dd><%= @employment.end_date || "None" %></dd>
+      
+      <dt>Current Job</dt>
+      <dd><%= @employment.current_job || "None" %></dd>
+      
+      <dt>Details</dt>
+      <dd><%= @employment.details || "None" %></dd>
+    </dl>
+    
+  </div>
+  
+</div>

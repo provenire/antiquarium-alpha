@@ -12,6 +12,14 @@ class Place < ActiveRecord::Base
   # Relations
   has_and_belongs_to_many :photos
   
+  has_many :employments
+  has_many :places, through: :employments
+  
+  
+  # Search
+  include PgSearch
+  multisearchable :against => [:name, :description]
+  
   
   # Helper functions
   def num_photos

@@ -26,16 +26,20 @@ gem 'cloudinary'
 gem 'fog'
 
 
+# Search
+gem 'pg_search'
+
+
 # Docs
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0',     group: :doc
 
 
 # Development
-gem 'spring',        group: :development
+gem 'spring',               group: :development
 
 
 # Heroku
-gem 'rails_12factor', group: :production
-gem 'heroku_rails_deflate', :group => :production
+gem 'rails_12factor',       group: :production
+gem 'heroku_rails_deflate', group: :production
 
 ruby "2.1.1"
