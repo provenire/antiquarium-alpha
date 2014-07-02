@@ -29,19 +29,79 @@
     <h3>Info</h3>
     <dl class="dl-horizontal">
       <dt>Title</dt>
-      <dd><%= @employment.title || "None" %></dd>
-      
+      <dd>
+        <% if editable_object? @employment %>
+          <span id="title"
+            data-type="text"
+            data-pk=<%= @employment.id %>
+            data-url="/employments/<%= @employment.id %>"
+            data-title="Title">
+            <%= @employment.title %>
+          </span>
+        <% else %>
+          <%= @employment.title %>
+        <% end %>
+      </dd>
+            
       <dt>Start Date</dt>
-      <dd><%= @employment.start_date || "None" %></dd>
+      <dd>
+        <% if editable_object? @employment %>
+          <span id="start_date"
+            data-type="combodate"
+            data-pk=<%= @employment.id %>
+            data-url="/employments/<%= @employment.id %>"
+            data-title="start_date">
+            <%= @employment.start_date %>
+          </span>
+        <% else %>
+          <%= @employment.start_date %>
+        <% end %>
+      </dd>
       
       <dt>End Date</dt>
-      <dd><%= @employment.end_date || "None" %></dd>
+      <dd>
+        <% if editable_object? @employment %>
+          <span id="end_date"
+            data-type="combodate"
+            data-pk=<%= @employment.id %>
+            data-url="/employments/<%= @employment.id %>"
+            data-title="end_date">
+            <%= @employment.end_date %>
+          </span>
+        <% else %>
+          <%= @employment.end_date %>
+        <% end %>
+      </dd>
       
       <dt>Current Job</dt>
-      <dd><%= @employment.current_job || "None" %></dd>
+      <dd>
+        <% if editable_object? @employment %>
+          <span id="current_job"
+            data-type="select"
+            data-pk=<%= @employment.id %>
+            data-url="/employments/<%= @employment.id %>"
+            data-title="current_job">
+            <%= @employment.current_job %>
+          </span>
+        <% else %>
+          <%= @employment.current_job %>
+        <% end %>
+      </dd>
       
       <dt>Details</dt>
-      <dd><%= @employment.details || "None" %></dd>
+      <dd>
+        <% if editable_object? @employment %>
+          <span id="details"
+            data-type="textarea"
+            data-pk=<%= @employment.id %>
+            data-url="/employments/<%= @employment.id %>"
+            data-title="details">
+            <%= @employment.details %>
+          </span>
+        <% else %>
+          <%= @employment.details %>
+        <% end %>
+      </dd>
     </dl>
     
   </div>

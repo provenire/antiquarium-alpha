@@ -36,6 +36,12 @@ class EmploymentsController < ApplicationController
   end
   
   def update
+    @employment = Employment.find(params[:id])
+    if params[:name]=='current_job'
+      params[:value] = (params[:value]=='true')
+    end
+    @employment.update_attributes(params[:name] => params[:value])
+    render nothing: true
   end
   
   
