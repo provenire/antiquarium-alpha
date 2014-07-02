@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702045028) do
+ActiveRecord::Schema.define(version: 20140702074052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+  enable_extension "hstore"
 
   create_table "artifacts", force: true do |t|
     t.uuid     "uuid",            null: false
@@ -48,6 +49,17 @@ ActiveRecord::Schema.define(version: 20140702045028) do
 
   add_index "employments", ["person_id"], name: "index_employments_on_person_id", using: :btree
   add_index "employments", ["place_id"], name: "index_employments_on_place_id", using: :btree
+
+  create_table "events", force: true do |t|
+    t.uuid     "uuid",                           null: false
+    t.date     "date"
+    t.string   "verb",       default: "unknown", null: false
+    t.text     "details"
+    t.boolean  "failed",     default: false,     null: false
+    t.string   "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "people", force: true do |t|
     t.uuid     "uuid",                              null: false
