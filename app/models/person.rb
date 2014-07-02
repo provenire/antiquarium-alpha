@@ -9,8 +9,10 @@ class Person < ActiveRecord::Base
   #  - nationality
   
   
+  
   # UUID Operations
   include UUID
+  
   
   
   # Relations
@@ -19,10 +21,15 @@ class Person < ActiveRecord::Base
   has_many :employments
   has_many :people, through: :employments
   
+  has_many :interactions, as: :actor
+  has_many :events, through: :interactions
+  
+  
   
   # Search
   include PgSearch
   multisearchable :against => [:name, :description]
+  
   
   
   # Helper functions

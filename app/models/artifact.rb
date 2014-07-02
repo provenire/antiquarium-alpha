@@ -9,12 +9,15 @@ class Artifact < ActiveRecord::Base
   #  - date_created
   
   
+  
   # UUID Operations
   include UUID
   
   
+  
   # Relations
   has_and_belongs_to_many :photos
+  
   
   
   # Helpers

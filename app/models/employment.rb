@@ -8,6 +8,9 @@ class Employment < ActiveRecord::Base
   #  - current_job
   #  - details
   
+  
+  
+  # Relationships
   belongs_to :person
   belongs_to :place
   
