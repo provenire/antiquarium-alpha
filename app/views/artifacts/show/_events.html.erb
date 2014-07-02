@@ -8,7 +8,16 @@
     
     <div class="col-lg-4">
       <br>
-      
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-plus"></span> Event <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <% Verb.all.each do |v| %>
+            <li><%= link_to v.display, new_event_path(artifact_id: @artifact.uuid, type: v.keyword) %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
     
   </div>
