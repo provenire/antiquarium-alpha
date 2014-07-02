@@ -74,7 +74,12 @@
 
 <div class="row">
   
-  <div class="col-lg-8"></div>
+  <div class="col-sm-4">
+    <h3>Artifacts</h3>
+  </div>
+  
+  <!-- Employments -->
+  <%= render partial: 'people/show/employments', object: @person %>
   
   <!-- Properties -->
   <%= render partial: 'people/show/details', object: @person %>

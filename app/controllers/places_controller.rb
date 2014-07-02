@@ -35,6 +35,22 @@ class PlacesController < ApplicationController
   def destroy
   end
   
+  def find
+    query = params[:q]
+    results = PgSearch.multisearch(query).where(searchable_type: ['Place'])
+    respond_to do |format|
+      format.json {
+        render :json => results.map{|a| 
+          {
+            id:    a.searchable.uuid,
+            text:  a.searchable.name
+          }
+        }
+      }
+    end
+  end
+  
+  
   
   # Params
   private
