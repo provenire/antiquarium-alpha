@@ -9,6 +9,11 @@ class Event < ActiveRecord::Base
   
   
   
+  # UUID Operations
+  include UUID
+  
+  
+  
   # Relationships
   has_many :interactions
   

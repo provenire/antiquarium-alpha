@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # Artifacts
   resources :artifacts do
     resources :photos
+    resources :events
   end
   
   
@@ -22,6 +23,10 @@ Rails.application.routes.draw do
   resources :places do
     resources :photos
   end
+  
+  
+  # Events
+  resources :events
   
   
   # Employments

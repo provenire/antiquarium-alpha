@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# Verbs for event interactions
+Verb.create(display: "sold to",        keyword: "sold_to")
+Verb.create(display: "transported to", keyword: "transported_to")
+Verb.create(display: "lent to",        keyword: "lent_to")
+Verb.create(display: "donated to",     keyword: "donated_to")
+Verb.create(display: "consigned to",   keyword: "consigned_to")
+Verb.create(display: "returned to",    keyword: "returned_to")
+Verb.create(display: "offered to",     keyword: "offered_to")
+Verb.create(display: "recommended to", keyword: "recommended_to")
+Verb.create(display: "examined",       keyword: "examined")
+Verb.create(display: "published",      keyword: "published")
+Verb.create(display: "found",          keyword: "found")
+Verb.create(display: "claimed",        keyword: "claimed")
+Verb.create(display: "transferred to", keyword: "transferred_to")
