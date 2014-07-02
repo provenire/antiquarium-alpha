@@ -5,8 +5,10 @@ class Place < ActiveRecord::Base
   #  - description
   
   
+  
   # UUID Operations
   include UUID
+  
   
   
   # Relations
@@ -15,10 +17,15 @@ class Place < ActiveRecord::Base
   has_many :employments
   has_many :places, through: :employments
   
+  has_many :interactions, as: :actor
+  has_many :events, through: :interactions
+  
+  
   
   # Search
   include PgSearch
   multisearchable :against => [:name, :description]
+  
   
   
   # Helper functions

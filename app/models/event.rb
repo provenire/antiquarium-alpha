@@ -8,4 +8,9 @@ class Event < ActiveRecord::Base
   #  - price
   
   
+  
+  # Relationships
+  has_many :interactions
+  
+  
 end

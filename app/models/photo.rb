@@ -4,13 +4,16 @@ class Photo < ActiveRecord::Base
   #  - comments
   
   
+  
   # Mount Carrierwave
   mount_uploader :image, ImageUploader
+  
   
   
   # Relations
   has_and_belongs_to_many :artifacts
   has_and_belongs_to_many :people
+  
   
   
   # Helper Functions
