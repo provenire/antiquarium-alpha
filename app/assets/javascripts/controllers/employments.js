@@ -4,8 +4,24 @@
  */
 Antiquarium.Controller["employments"] = {
   
+  show: function() {
+    // Editable
+    $('#title').editable();
+    $('#start_date').editable();
+    $('#end_date').editable();
+    $('#current_job').editable({
+      source: [
+        { value: 'true',  text: 'true' },
+        { value: 'false', text: 'false' }
+      ]
+    });
+    $('#details').editable();
+  },
+  
+  
   new: function() {
     
+    // Person Select2
     $("#employment_person").select2({
       id: function(e) { return JSON.stringify(e) },
       placeholder: "Start typing a name...",
