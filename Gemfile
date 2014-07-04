@@ -24,10 +24,12 @@ gem 'country_select'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'fog'
+gem 'pdfkit'
+# gem 'wkhtmltopdf-heroku', git: 'git://github.com/pallymore/wkhtmltopdf-heroku', group: :production
 
 
 # Background Queue
-# gem 'resque', "~> 1.22.0"
+gem 'resque', "~> 1.22.0"
 
 
 # Search
