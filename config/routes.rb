@@ -36,4 +36,8 @@ Rails.application.routes.draw do
   # Photos
   resources :photos
   
+  
+  # Sources
+  resources :sources
+  
 end
