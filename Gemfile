@@ -42,7 +42,11 @@ gem 'sdoc', '~> 0.4.0',     group: :doc
 
 
 # Development
-gem 'spring',               group: :development
+group :development do
+  gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 
 # Heroku

@@ -69,7 +69,7 @@
   </div>
 
   <!-- Photos -->
-  <%= render partial: 'places/show/photos', object: @place %>
+  <%= render partial: 'photos/partials/photos', locals: { object: @place } %>
   
 
 </div>
@@ -86,4 +86,4 @@
   
 </div>
 
-<%= render 'places/show/upload_photo' %>
+<%= render partial: 'photos/partials/upload_photo', locals: { object: @place } %>

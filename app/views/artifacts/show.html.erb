@@ -69,7 +69,7 @@
   </div>
 
   <!-- Photos -->
-  <%= render partial: 'artifacts/show/photos', object: @artifact %>
+  <%= render partial: 'photos/partials/photos', locals: { object: @artifact } %>
 
 </div>
 
@@ -83,4 +83,4 @@
   
 </div>
 
-<%= render 'artifacts/show/upload_photo' %>
+<%= render partial: 'photos/partials/upload_photo', locals: { object: @artifact } %>
