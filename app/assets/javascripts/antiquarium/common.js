@@ -11,7 +11,7 @@ Antiquarium.Common = {
     // You can further customize the configuration using .fileupload method
     // as we do below.
     $(".cloudinary-fileupload")
-      .fileupload({
+      .cloudinary_fileupload({
         // Uncomment the following lines to enable client side image resizing and valiation.
         // Make sure cloudinary/processing is included the js file
         //disableImageResize: false,
@@ -28,6 +28,7 @@ Antiquarium.Common = {
           $(".status").text("Uploading... " + Math.round((data.loaded * 100.0) / data.total) + "%");
         },
         fail: function (e, data) {
+          console.log(data);
           $(".status").text("Upload failed");
         }
       })
