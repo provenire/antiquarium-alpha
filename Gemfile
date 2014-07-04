@@ -27,6 +27,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'fog'
 gem 'pdfkit'
+gem 'phantomjs'
 # gem 'wkhtmltopdf-heroku', git: 'git://github.com/pallymore/wkhtmltopdf-heroku', group: :production
 
 
