@@ -27,7 +27,7 @@
         <table class="table table-striped table-hover">
             <% @artifacts.each do |a| %>
                 <tr>
-                    <td class="col-lg-1">
+                    <td class="col-sm-2">
                         <% if a.num_photos > 0 %>
                             <%= link_to a do %>
                                 <%= image_tag a.default_photo.image.object_thumb.url, class: 'img-responsive' %>

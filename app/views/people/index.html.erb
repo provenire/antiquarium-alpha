@@ -27,7 +27,7 @@
     <table class="table table-striped table-hover">
       <% @people.each do |p| %>
         <tr>
-          <td class="col-lg-1">
+          <td class="col-sm-2">
             <% if p.num_photos > 0 %>
               <%= link_to p do %>
                 <%= image_tag p.default_photo.image.object_thumb.url, class: 'img-responsive' %>
