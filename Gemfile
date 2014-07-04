@@ -26,6 +26,10 @@ gem 'cloudinary'
 gem 'fog'
 
 
+# Background Queue
+# gem 'resque', "~> 1.22.0"
+
+
 # Search
 gem 'pg_search'
 
