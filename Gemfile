@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'navigasmic'
 gem 'kaminari'
 gem 'country_select'
+gem 'pdfjs-rails', git: 'git://github.com/Empact/pdfjs-rails'
 
 
 # Files
@@ -30,7 +31,7 @@ gem 'pdfkit'
 
 
 # Background Queue
-gem 'resque', "~> 1.22.0"
+gem 'resque', '~> 1.22.0', require: 'resque/server'
 
 
 # Search

@@ -9,6 +9,7 @@
 //= require select2.min.js
 //= require bootstrap-editable.min.js
 //= require moment.js
+// require pdf.js
 //
 //= require antiquarium.js
 
