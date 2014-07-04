@@ -1,0 +1,52 @@
+<div class="row">
+  <!-- Name -->
+  <div class="col-lg-8">
+    <h2>Sources</h2>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to root_path do %>
+          <span class="glyphicon glyphicon-home"></span>
+        <% end %>
+      </li>
+      <li><a href="#">Database</a></li>
+      <li class="active">Sources</li>
+    </ol>
+  </div>
+  <div class="col-lg-4">
+    <h3>Filter Results</h3>
+    <div class="well"></div>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Breadcrumbs -->
+  <div class="col-lg-8">
+
+    <%= page_entries_info @sources %>
+
+    <table class="table table-striped table-hover">
+      <% @sources.each do |s| %>
+        <tr>
+          <td class="col-sm-2">
+            <% if s.thumbnail.url %>
+              <%= link_to source_path(s) do %>
+                <%= image_tag s.thumbnail.url, class: 'img-responsive' %>
+              <% end %>
+            <% else %>
+              <%= link_to source_path(s) do %>
+                <img data-src="holder.js/95x95/text:No Thumb" class="img-responsive"/>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <h4><%= link_to s.name, source_path(s) %></h4>
+            <p><small><%= s.type %></small></p>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    
+    <%= paginate @sources %>
+  </div>
+
+</div>

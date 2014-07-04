@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/Empact/pdfjs-rails
+  revision: 0ae88c92b0eec3428740c7bc3f31b0942b2042a7
+  specs:
+    pdfjs-rails (0.0.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -211,6 +217,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   navigasmic
+  pdfjs-rails!
   pdfkit
   pg
   pg_search

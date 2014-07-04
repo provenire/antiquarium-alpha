@@ -1,4 +1,5 @@
 require 'resque/errors'
+require 'pp'
 
 
 # Steps:
@@ -24,6 +25,8 @@ class WebPDF
   
   attr_accessor :source, :pdf
   
+  @queue = :pdf_queue
+  
   
   # Initialize WebPDF Job
   def initialize(source_id)
@@ -42,7 +45,7 @@ class WebPDF
   
   # Generate PDF and save
   def generate
-    build_pdf
+    create_pdf
     store_pdf
     destroy_pdf
     @source.update_attributes(status: 'ready')
@@ -53,17 +56,24 @@ class WebPDF
   
   # Store File to Fog, set to carrierwave
   def store_pdf
+    puts "WebPDF: Storing #{file_path}"
     @source.update_attributes(document: @pdf)
   end
   
   # Create a PDF from URL
   def create_pdf
-    kit = PDFKit.new(@source)
-    @pdf = kit.to_file(file_path)
+    puts "WebPDF: Creating #{file_path}"
+    begin
+      kit = PDFKit.new(@source.uri)
+      @pdf = kit.to_file(file_path)
+    rescue => e
+      @pdf = File.open(file_path)
+    end
   end
   
   # Destroy PDF
   def destroy_pdf
+    puts "WebPDF: Destroying temp #{file_path}"
     @pdf.close
     File.delete(@pdf)
   end
