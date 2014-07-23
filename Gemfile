@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Core
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.4'
 gem 'pg'
 gem 'hstore_accessor'
 
