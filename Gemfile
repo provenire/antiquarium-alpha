@@ -30,9 +30,10 @@ gem 'pdfkit'
 gem 'phantomjs'
 
 
-# Conversion
+# APIs
 gem 'geocoder'
 gem 'money-rails'
+gem 'googlebooks'
 
 
 # Background Queue
