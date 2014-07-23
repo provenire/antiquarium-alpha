@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723035846) do
+ActiveRecord::Schema.define(version: 20140723060930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,14 +56,15 @@ ActiveRecord::Schema.define(version: 20140723035846) do
   add_index "employments", ["place_id"], name: "index_employments_on_place_id", using: :btree
 
   create_table "events", force: true do |t|
-    t.uuid     "uuid",                           null: false
+    t.uuid     "uuid",                               null: false
     t.date     "date"
-    t.string   "verb",       default: "unknown", null: false
+    t.string   "verb",           default: "unknown", null: false
     t.text     "details"
-    t.boolean  "failed",     default: false,     null: false
-    t.string   "price"
+    t.boolean  "failed",         default: false,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "price_cents",    default: 0,         null: false
+    t.string   "price_currency", default: "USD",     null: false
   end
 
   create_table "interactions", force: true do |t|

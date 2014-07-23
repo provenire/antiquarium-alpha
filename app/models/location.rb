@@ -12,5 +12,5 @@ class Location < ActiveRecord::Base
   
   # Relationships
   belongs_to :locatable, polymorphic: true
-  
+
 end

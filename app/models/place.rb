@@ -20,7 +20,7 @@ class Place < ActiveRecord::Base
   has_many :interactions, as: :actor
   has_many :events, through: :interactions
   
-  has_one  :location
+  has_one  :location, as: :locatable
   
   
   # Search

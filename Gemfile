@@ -30,9 +30,9 @@ gem 'pdfkit'
 gem 'phantomjs'
 
 
-# Geo
+# Conversion
 gem 'geocoder'
-
+gem 'money-rails'
 
 
 # Background Queue

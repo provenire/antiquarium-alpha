@@ -1,4 +1,10 @@
 <div class="form-group">
   <%= f.label :price %>
-  <%= f.text_field :price, class: 'form-control' %>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <%= f.select :price_currency, currencies, class: 'form-control'  %>
+    </span>
+    <%= f.text_field :price, class: 'form-control' %>
+  </div>
 </div>
+

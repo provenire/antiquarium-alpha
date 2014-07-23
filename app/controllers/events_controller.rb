@@ -15,6 +15,39 @@ class EventsController < ApplicationController
   end
   
   def create
+    @verb     = Verb.find_by(keyword: params[:event][:verb]) || Verb.find_by(keyword: 'transported_to')
+    @artifact = Artifact.find_by_uuid!(params[:event].delete(:artifact))
+    
+    @event = Event.new(event_params)
+    @event.artifacts << @artifact
+    
+    if params[:actor_primary_unknown].nil? && !params[:actor_primary].to_s.empty?
+      primary_actor = JSON.parse(params[:actor_primary])
+      primary_actor = primary_actor["type"].constantize.find_by_uuid!(primary_actor["id"])
+      @event.interactions.new(actor: primary_actor)
+    elsif !params[:actor_primary_unknown].nil?
+      @event.interactions.new(unknown_actor: true)
+    end
+    
+    if params[:actor_secondary_unknown].nil? && !params[:actor_secondary].to_s.empty?
+      secondary_actor = JSON.parse(params[:actor_secondary])
+      secondary_actor = secondary_actor["type"].constantize.find_by_uuid!(secondary_actor["id"])
+      @event.interactions.new(actor: secondary_actor, recipient: true)
+    elsif !params[:actor_secondary_unknown].nil?
+      @event.interactions.new(unknown_actor: true, recipient: true)
+    end
+    
+    if params[:location_unknown].nil? && !params[:location].to_s.empty?
+      @event.build_location(address: params[:location])
+    end
+    
+    
+    # Save
+    if @event.save
+      redirect_to @event
+    else
+      render "new"
+    end
   end
   
   def edit
@@ -49,7 +82,7 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    
+    params.require(:event).permit(:verb, :date, :price, :price_currency, :failed, :details)
   end
   
 end
