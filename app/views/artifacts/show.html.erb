@@ -55,7 +55,7 @@
         data-pk=<%= @artifact.uuid %>
         data-url="/artifacts/<%= @artifact.uuid %>"
         data-title="Description">
-        <%= @artifact.description %>
+        <em><%= @artifact.description %></em>
       </p>
       <p>
         <button id="edit_description" class="btn btn-xs">

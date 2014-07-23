@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(font-path('opensans/regular/OpenSans-Regular.eot'));
+  src: local('Open Sans'), local('OpenSans'),
+       url(font-path('opensans/regular/OpenSans-Regular.eot?#iefix')) format('embedded-opentype'),
+       url(font-path('opensans/regular/OpenSans-Regular.woff')) format('woff'),
+       url(font-path('opensans/regular/OpenSans-Regular.ttf')) format('truetype'),
+       url(font-path('opensans/regular/OpenSans-Regular.svg')) format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(font-path('opensans/bold/OpenSans-Bold.eot'));
+  src: local('Open Sans Bold'), local('OpenSans-Bold'),
+       url(font-path('opensans/bold/OpenSans-Bold.eot?#iefix')) format('embedded-opentype'),
+       url(font-path('opensans/bold/OpenSans-Bold.woff')) format('woff'),
+       url(font-path('opensans/bold/OpenSans-Bold.ttf')) format('truetype'),
+       url(font-path('opensans/bold/OpenSans-Bold.svg')) format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url(font-path('opensans/italic/OpenSans-Italic.eot'));
+  src: local('Open Sans Italic'), local('OpenSans-Italic'),
+       url(font-path('opensans/italic/OpenSans-Italic.eot?#iefix')) format('embedded-opentype'),
+       url(font-path('opensans/italic/OpenSans-Italic.woff')) format('woff'),
+       url(font-path('opensans/italic/OpenSans-Italic.ttf')) format('truetype'),
+       url(font-path('opensans/italic/OpenSans-Italic.svg')) format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: url(font-path('opensans/bolditalic/OpenSans-BoldItalic.eot'));
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'),
+       url(font-path('opensans/bolditalic/OpenSans-BoldItalic.eot?#iefix')) format('embedded-opentype'),
+       url(font-path('opensans/bolditalic/OpenSans-BoldItalic.woff')) format('woff'),
+       url(font-path('opensans/bolditalic/OpenSans-BoldItalic.ttf')) format('truetype'),
+       url(font-path('opensans/bolditalic/OpenSans-BoldItalic.svg')) format('svg');
+}
