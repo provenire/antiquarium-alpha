@@ -85,6 +85,7 @@ GEM
     fog-json (1.0.0)
       multi_json (~> 1.0)
     formatador (0.2.5)
+    geocoder (1.2.3)
     heroku_rails_deflate (1.0.3)
       actionpack (>= 3.2.13)
       activesupport (>= 3.2.13)
@@ -212,6 +213,7 @@ DEPENDENCIES
   cloudinary
   country_select
   fog
+  geocoder
   heroku_rails_deflate
   hstore_accessor
   jbuilder (~> 2.0)

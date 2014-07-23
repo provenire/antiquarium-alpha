@@ -1,0 +1,14 @@
+<% name    = (label == :primary) ? :actor_primary : :actor_secondary %>
+<% unknown = (label == :primary) ? :actor_primary_unknown : :actor_secondary_unknown %>
+
+<div class="form-group">
+  <%= label_tag "Person/Place" %>
+  <%= text_field_tag name, nil, class: 'form-control actor' %>
+</div>
+
+<div class="checkbox">
+  <label>
+    <%= check_box_tag unknown %>
+    Unknown
+  </label>
+</div>

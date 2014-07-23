@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-lg-8">
+        <h2><%= @entity.name %>: Photos</h2>
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li>
+                <%= link_to root_path do %>
+                    <span class="glyphicon glyphicon-home"></span>
+                <% end %>
+            </li>
+            <li><a href="#">Database</a></li>
+            <li><%= link_to 'Artifacts', artifacts_path %></li>
+            <li><%= link_to @entity.name, @entity %></li>
+            <li class="active">Photos</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <% @photos.each do |photo| %>
+        <div class="col-lg-3">
+            <%= link_to photo, class: 'thumbnail' do %>
+                <%= image_tag photo.image.thumb.url, class: 'img-responsive'%>
+            <% end %>
+        </div>
+    <% end %>
+</div>

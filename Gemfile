@@ -31,6 +31,10 @@ gem 'phantomjs'
 # gem 'wkhtmltopdf-heroku', git: 'git://github.com/pallymore/wkhtmltopdf-heroku', group: :production
 
 
+# Geo
+gem 'geocoder'
+
+
 # Background Queue
 gem 'resque', '~> 1.22.0', require: 'resque/server'
 

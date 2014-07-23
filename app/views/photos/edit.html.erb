@@ -1,0 +1,25 @@
+<!-- Page header -->
+<article class="page-header">
+	<h1>Edit Photo</h1>
+</article>
+<!-- /Page header -->
+
+<div class="row">
+	<article class="span12 data-block">
+		<section>
+			
+			<%= form_for @photo, method: :put do |f| %>
+			    <div class="control-group">
+			        <label class="control-label">Comments</label>
+			        <div class="controls">
+			            <%= f.text_area :comments, rows: 5, class: 'span8', value: @photo.comments %>
+			        </div>
+			    </div>
+			    
+			    <%= f.submit 'Save', class: 'btn btn-alt btn-success' %>
+			<% end %>
+			
+			
+		</section>
+	</article>
+</div>
