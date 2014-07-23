@@ -28,11 +28,12 @@ gem 'cloudinary'
 gem 'fog'
 gem 'pdfkit'
 gem 'phantomjs'
-# gem 'wkhtmltopdf-heroku', git: 'git://github.com/pallymore/wkhtmltopdf-heroku', group: :production
+gem 'wkhtmltopdf-heroku', git: 'git://github.com/pallymore/wkhtmltopdf-heroku', group: :production
 
 
 # Geo
 gem 'geocoder'
+
 
 
 # Background Queue

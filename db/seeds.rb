@@ -1,4 +1,3 @@
-# Verbs for event interactions
 Verb.create(display: "sold to",        keyword: "sold_to",        components: ['date', 'failed', 'details', 'primary_actor', 'secondary_actor', 'price'])
 Verb.create(display: "transported to", keyword: "transported_to", components: ['date', 'failed', 'details', 'primary_actor', 'location'])
 Verb.create(display: "lent to",        keyword: "lent_to",        components: ['date', 'failed', 'details', 'primary_actor', 'secondary_actor'])

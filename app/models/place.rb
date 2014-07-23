@@ -23,7 +23,6 @@ class Place < ActiveRecord::Base
   has_one  :location
   
   
-  
   # Search
   include PgSearch
   multisearchable :against => [:name, :description]
