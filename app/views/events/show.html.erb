@@ -1,0 +1,168 @@
+<div class="row">
+  <div class="col-lg-8">
+    <h2>Event</h2>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-8">
+    
+    
+    <div class="row">
+      <div class="col-sm-12">
+        <ol class="breadcrumb">
+          <li>
+            <%= link_to root_path do %>
+              <span class="glyphicon glyphicon-home"></span>
+            <% end %>
+          </li>
+          <li><a href="#">Database</a></li>
+          <li><a href="#">Events</a></li>
+          <li class="active">Event</li>
+        </ol>
+      </div>
+    </div>
+  
+  
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="well">
+        
+          <table class="table">
+            <% @event.primary_actors.each do |a| %>
+              <tr>
+                <div class="media">
+                  <% if a.class == Unknown %>
+                    <img class="media-object pull-left" data-src="holder.js/50x50/industrial/text:?">
+                    <div class="media-body">
+                      <h4 class="media-heading"><%= a.name %></h4>
+                      <strong><%= a.class.to_s %></strong>
+                    </div>
+                  <% else %>
+                    <%= link_to a, class: 'pull-left' do %>
+                      <%= image_tag a.default_photo.image.event_thumb.url, class: 'media-object' %>
+                    <% end %>
+                    <div class="media-body">
+                      <h4 class="media-heading"><%= link_to a.name, a %></h4>
+                      <strong><%= a.class.to_s %></strong>
+                    </div>
+                  <% end %>
+                </div>
+              </tr>
+            <% end %>
+          </table>
+        
+        </div>
+      </div>
+    
+      <div class="col-sm-2">
+        <br>
+        <strong><%= @event.pretty_verb %></strong>
+      </div>
+    
+      <div class="col-sm-5">
+        <div class="well">
+          <% if @event.location %>
+            <%= image_tag @event.location.map_url, class: 'img-responsive' %>
+          <% else %>
+            <table class="table">
+              <% @event.secondary_actors.each do |a| %>
+                <tr>
+                  <div class="media">
+                    <% if a.class == Unknown %>
+                      <img class="media-object pull-left" data-src="holder.js/50x50">
+                      <div class="media-body">
+                        <h4 class="media-heading"><%= a.name %></h4>
+                        <strong><%= a.class.to_s %></strong>
+                      </div>
+                    <% else %>
+                      <%= link_to a, class: 'pull-left' do %>
+                        <% if a.num_photos > 0 %>
+                          <%= image_tag a.default_photo.image.event_thumb.url, class: 'media-object' %>
+                        <% else %>
+                          <img class="media-object pull-left" data-src="holder.js/50x50/industrial/text:No Photo">
+                        <% end %>
+                      <% end %>
+                      <div class="media-body">
+                        <h4 class="media-heading"><%= link_to a.name, a %></h4>
+                        <strong><%= a.class.to_s %></strong>
+                      </div>
+                    <% end %>
+                  </div>
+                </tr>
+              <% end %>
+            </table>
+          <% end %>
+        </div>
+      </div>
+  
+  
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Components</h3>
+        <dl class="dl-horizontal">
+          
+          <% if @event.components.include? 'date' %>
+            <dt>Date</dt>
+            <dd><%= @event.date %></dd>
+          <% end %>
+          
+          <% if @event.components.include? 'location' %>
+            <dt>Location</dt>
+            <dd><%= @event.address %></dd>
+          <% end %>
+      
+          <% if @event.components.include? 'price' %>
+            <dt>Price</dt>
+            <dd><%= humanized_money_with_symbol @event.price %></dd>
+          <% end %>
+        
+          <% if @event.components.include? 'failed' %>
+            <dt>Failed</dt>
+            <dd><%= @event.failed %></dd>
+          <% end %>
+        
+          <% if @event.components.include? 'details' %>
+            <dt>Details</dt>
+            <dd><%= @event.details %></dd>
+          <% end %>
+          
+          <dt>
+        </dl>
+      </div>
+    </div>
+    
+    
+  </div>
+  
+  
+  <div class="col-sm-4">
+    <h3>Artifacts</h3>
+    <% if @event.artifacts.size > 0 %>
+      <table class="table">
+        <% @event.artifacts.each do |a| %>
+          <tr>
+            <td width="64">
+              <%= link_to a do %>
+                <% if a.num_photos > 0 %>
+                  <%= image_tag a.default_photo.image.event_thumb.url %>
+                <% else %>
+                  <img data-src="holder.js/64x64" />
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <h4><%= link_to a.name, a %></h4>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <p>No Artifacts.</p>
+    <% end %>
+  </div>
+  
+</div>

@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     if params[:actor_primary_unknown].nil? && !params[:actor_primary].to_s.empty?
       primary_actor = JSON.parse(params[:actor_primary])
       primary_actor = primary_actor["type"].constantize.find_by_uuid!(primary_actor["id"])
-      @event.interactions.new(actor: primary_actor)
+      @event.interactions.new(actor: primary_actor, recipient: false)
     elsif !params[:actor_primary_unknown].nil?
       @event.interactions.new(unknown_actor: true)
     end

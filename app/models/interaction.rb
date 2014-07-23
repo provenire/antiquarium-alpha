@@ -11,4 +11,13 @@ class Interaction < ActiveRecord::Base
   belongs_to :actor, polymorphic: true
   belongs_to :event
   
+  
+  def get_actor
+    if self.actor
+      return self.actor
+    else
+      return Unknown.new
+    end
+  end
+  
 end

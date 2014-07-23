@@ -1,3 +1,25 @@
 <div class="col-sm-6">
   <h3>Artifacts</h3>
+  <% if @place.artifacts.size > 0 %>
+    <table class="table">
+      <% @place.artifacts.each do |a| %>
+        <tr>
+          <td width="64">
+            <%= link_to a do %>
+              <% if a.num_photos > 0 %>
+                <%= image_tag a.default_photo.image.event_thumb.url %>
+              <% else %>
+                <img data-src="holder.js/64x64" />
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <h4><%= link_to a.name, a %></h4>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>No Artifacts.</p>
+  <% end %>
 </div>

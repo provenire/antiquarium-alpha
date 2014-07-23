@@ -23,6 +23,7 @@ class Person < ActiveRecord::Base
   
   has_many :interactions, as: :actor
   has_many :events, through: :interactions
+  has_many :artifacts, -> { uniq }, through: :events
   
   
   

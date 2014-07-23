@@ -26,6 +26,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     cloudinary_transformation :width => 765, :crop => :lpad
   end
   
+  version :event_thumb do
+    process :eager => true
+    cloudinary_transformation :width => 50, :height => 50, :crop => :thumb, :gravity => :face
+  end
+  
   version :small_thumb do
     process :eager => true
     cloudinary_transformation :width => 35, :height => 35, :crop => :thumb, :gravity => :face
