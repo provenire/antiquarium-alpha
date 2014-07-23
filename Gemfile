@@ -28,7 +28,6 @@ gem 'cloudinary'
 gem 'fog'
 gem 'pdfkit'
 gem 'phantomjs'
-gem 'wkhtmltopdf-heroku', git: 'git://github.com/pallymore/wkhtmltopdf-heroku', group: :production
 
 
 # Geo
@@ -57,7 +56,10 @@ end
 
 
 # Heroku
-gem 'rails_12factor',       group: :production
-gem 'heroku_rails_deflate', group: :production
+group :production do
+  gem 'wkhtmltopdf-heroku', git: 'git://github.com/pallymore/wkhtmltopdf-heroku'
+  gem 'rails_12factor'
+  gem 'heroku_rails_deflate'
+end
 
 ruby "2.1.1"

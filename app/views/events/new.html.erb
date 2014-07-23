@@ -16,7 +16,7 @@
 </div>
 
 <%= form_for @event do |f| %>
-  <%= f.hidden_field :artifact, value: @artifact %>
+  <%= f.hidden_field :artifact, value: @artifact.uuid %>
   <%= f.hidden_field :verb, value: @verb.keyword %>
   
   <div class="row">

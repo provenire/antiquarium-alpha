@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   
   
   # Events
+  get '/events/actors', to: 'events#actors', as: 'find_actors'
   resources :events
   
   

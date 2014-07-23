@@ -26,4 +26,30 @@ class EventsController < ApplicationController
   def destroy
   end
   
+  
+  
+  def actors
+    query = params[:q]
+    results = PgSearch.multisearch(query).where(searchable_type: ['Person', 'Place'])
+    respond_to do |format|
+      format.json {
+        render :json => results.map{|a| 
+          {
+            id:    a.searchable.uuid,
+            text:  a.searchable.name,
+            type:  a.searchable.class.to_s
+          }
+        }
+      }
+    end
+  end
+  
+  
+  
+  private
+  
+  def event_params
+    
+  end
+  
 end
