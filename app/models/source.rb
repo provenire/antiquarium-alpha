@@ -16,4 +16,11 @@ class Source < ActiveRecord::Base
   mount_uploader :document,  DocumentUploader
   mount_uploader :thumbnail, ThumbnailUploader
   
+  
+  
+  # Search
+  include PgSearch
+  multisearchable :against => [:name, :description]
+  
+  
 end

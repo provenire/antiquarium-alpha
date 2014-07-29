@@ -20,6 +20,13 @@ class Artifact < ActiveRecord::Base
   has_and_belongs_to_many :events
   
   
+  
+  # Search
+  include PgSearch
+  multisearchable :against => [:name, :alternate_names, :description, :artist]
+  
+  
+  
   # Helpers
   def names
     self.alternate_names || []

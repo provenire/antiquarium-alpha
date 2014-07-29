@@ -3,6 +3,7 @@ class Place < ActiveRecord::Base
   #  - uuid
   #  - name
   #  - description
+  #  - location
   
   
   
