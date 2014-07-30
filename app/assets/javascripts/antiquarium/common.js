@@ -24,7 +24,8 @@ Antiquarium.Common = {
           $(".status").text("Starting upload...");
         },
         progress: function (e, data) {
-          $('.progress-bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%'); 
+          $('.progress-bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
+          console.log($('.progress-bar').css('width'));
           $(".status").text("Uploading... " + Math.round((data.loaded * 100.0) / data.total) + "%");
         },
         fail: function (e, data) {
