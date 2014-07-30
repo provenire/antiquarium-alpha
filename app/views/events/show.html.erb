@@ -54,7 +54,11 @@
                     </div>
                   <% else %>
                     <%= link_to a, class: 'pull-left' do %>
-                      <%= image_tag a.default_photo.image.event_thumb.url, class: 'media-object' %>
+                      <% if a.num_photos > 0 %>
+                        <%= image_tag a.default_photo.image.event_thumb.url, class: 'media-object' %>
+                      <% else %>
+                        <img class="media-object pull-left" data-src="holder.js/50x50/industrial/text:?">
+                      <% end %>
                     <% end %>
                     <div class="media-body">
                       <h4 class="media-heading"><%= link_to a.name, a %></h4>
