@@ -17,7 +17,11 @@
         <tr>
           <td width="60">
             <%= link_to e do %>
-              <img data-src="holder.js/50x50" />
+              <% if e.person.num_photos > 0 %>
+                <%= image_tag e.person.default_photo.image.event_thumb.url %>
+              <% else %>
+                <img data-src="holder.js/50x50" />
+              <% end %>
             <% end %>
           </td>
           <td>

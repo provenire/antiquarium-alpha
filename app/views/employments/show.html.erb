@@ -32,10 +32,32 @@
   
   <div class="col-sm-4">
     <h3>Place</h3>
-    <span class="glyphicon glyphicon-map-marker"></span> <%= link_to @employment.place.name, @employment.place %>
+    <div class="media">
+      <%= link_to @employment.place, class: 'pull-left' do %>
+        <% if @employment.place.num_photos > 0 %>
+          <%= image_tag @employment.place.default_photo.image.event_thumb.url, class: 'media-object' %>
+        <% else %>
+          <img class="media-object pull-left" data-src="holder.js/50x50/industrial/text:?">
+        <% end %>
+      <% end %>
+      <div class="media-body">
+        <h4 class="media-heading"><%= link_to @employment.place.name, @employment.place %></h4>
+      </div>
+    </div>
     
     <h3>Person</h3>
-    <span class="glyphicon glyphicon-user"></span> <%= link_to @employment.person.name, @employment.person %>
+    <div class="media">
+      <%= link_to @employment.person, class: 'pull-left' do %>
+        <% if @employment.person.num_photos > 0 %>
+          <%= image_tag @employment.person.default_photo.image.event_thumb.url, class: 'media-object' %>
+        <% else %>
+          <img class="media-object pull-left" data-src="holder.js/50x50/industrial/text:?">
+        <% end %>
+      <% end %>
+      <div class="media-body">
+        <h4 class="media-heading"><%= link_to @employment.person.name, @employment.person %></h4>
+      </div>
+    </div>
   </div>
   
   <div class="col-sm-8">
