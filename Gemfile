@@ -11,7 +11,7 @@ gem 'rails_admin'
 
 # Users
 gem 'devise'
-#gem 'cancan'
+gem 'paper_trail', '~> 3.0.3'
 
 
 # Assets

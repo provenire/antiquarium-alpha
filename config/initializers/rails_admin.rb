@@ -1,3 +1,17 @@
+module RailsAdmin::Config::Fields::Types
+  class UUID < RailsAdmin::Config::Fields::Base
+    RailsAdmin::Config::Fields::Types::register(:uuid, self)
+
+    def allowed_methods
+      [@name]
+    end
+
+    def dom_name
+      @dom_name ||= "#{bindings[:form].object_name}_#{@name}"
+    end
+  end
+end
+
 RailsAdmin.config do |config|
   # Include specific models (exclude the others):
   Rails.application.eager_load!
