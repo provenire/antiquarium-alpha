@@ -6,6 +6,11 @@ gem 'rails', '4.1.4'
 gem 'pg'
 gem 'hstore_accessor'
 gem 'rails_config'
+gem 'rails_admin'
+
+
+# Users
+gem 'devise'
 
 
 # Assets
