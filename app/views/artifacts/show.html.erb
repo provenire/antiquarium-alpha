@@ -45,7 +45,7 @@
       </li>
       <li><a href="#">Database</a></li>
       <li><%= link_to 'Artifacts', artifacts_path %></li>
-      <li class="active"><%= @artifact.name %></li>
+      <li class="active" id="breadcrumb_name"><%= @artifact.name %></li>
     </ol>
     
     <% if editable_object? @artifact %>

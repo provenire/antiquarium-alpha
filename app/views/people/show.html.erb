@@ -45,7 +45,7 @@
       </li>
       <li><a href="#">Database</a></li>
       <li><%= link_to 'People', people_path %></li>
-      <li class="active"><%= @person.name %></li>
+      <li class="active" id="breadcrumb_name"><%= @person.name %></li>
     </ol>
     <% if editable_object? @person %>
       <p id="description"

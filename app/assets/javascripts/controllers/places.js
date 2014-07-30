@@ -19,6 +19,9 @@ Antiquarium.Controller["places"] = {
       e.stopPropagation();
       $('#name').editable('show');
     });
+    $('#name').on('save', function(e, editable) {
+      $('#breadcrumb_name').text(editable.newValue);
+    });
     
     // Edit Description
     $('#description').editable({
