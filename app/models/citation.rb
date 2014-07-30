@@ -8,4 +8,8 @@ class Citation < ActiveRecord::Base
   belongs_to :source
   belongs_to :event
   
+  
+  # Revisions
+  has_paper_trail
+  
 end

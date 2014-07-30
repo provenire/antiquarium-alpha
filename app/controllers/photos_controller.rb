@@ -68,6 +68,12 @@ class PhotosController < ApplicationController
   end
   
   
+  def history
+    @photo = Photo.find(params[:id])
+    @photo.versions.each{|v| v.whodunnit = User.find(v.whodunnit); v.changeset.delete(:updated_at) }
+  end
+  
+  
   # Params
   private
   

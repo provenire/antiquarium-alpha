@@ -36,6 +36,12 @@ class ArtifactsController < ApplicationController
   def destroy
   end
   
+  def history
+    @artifact = Artifact.find_by_uuid!(params[:id])
+    @versions = @artifact.versions.each{|v| v.whodunnit = User.find(v.whodunnit.to_i); v.changeset.delete(:updated_at) }
+    @versions.sort!{|a,b| b.created_at <=> a.created_at }
+  end
+  
   
   # Params
   private

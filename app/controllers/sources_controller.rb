@@ -18,9 +18,19 @@ class SourcesController < ApplicationController
   end
   
   def update
+    @source = Source.find_by_uuid(params[:id])
+    @source.update_attributes(params[:name] => params[:value])
+    render nothing: true
   end
   
   def destroy
+  end
+  
+  
+  def history
+    @source = Source.find_by_uuid!(params[:id])
+    @versions = @source.versions.each{|v| v.whodunnit = User.find(v.whodunnit.to_i); v.changeset.delete(:updated_at) }
+    @versions.sort!{|a,b| b.created_at <=> a.created_at }
   end
   
   

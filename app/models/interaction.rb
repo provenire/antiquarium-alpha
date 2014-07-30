@@ -12,6 +12,10 @@ class Interaction < ActiveRecord::Base
   belongs_to :event
   
   
+  # Revisions
+  has_paper_trail
+  
+  
   def get_actor
     if self.actor
       return self.actor

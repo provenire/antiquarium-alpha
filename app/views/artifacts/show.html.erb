@@ -21,10 +21,10 @@
   <div class="col-lg-3">
     <br/>
     <div class="pull-right">
-      <a href="#" class="btn btn-warning btn-sm">
+      <%= link_to artifact_history_path(@artifact), class: 'btn btn-warning btn-sm' do %>
         <span class="glyphicon glyphicon-th-list"></span> 
         History
-      </a>
+      <% end %>
       <a href="#" class="btn btn-danger btn-sm">
         <span class="glyphicon glyphicon-remove"></span> 
         Delete

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-9">
     <h2><%= @employment.person.name %> <small>employed by</small> <%= @employment.place.name %></h2>
     <ol class="breadcrumb">
       <li>
@@ -11,6 +11,19 @@
       <li><a href="#">Employments</a></li>
       <li class="active"><%= @employment.person.name %> employed by <%= @employment.place.name %></li>
     </ol>
+  </div>
+  <div class="col-lg-3">
+    <br/>
+    <div class="pull-right">
+      <%= link_to employment_history_path(@employment), class: 'btn btn-warning btn-sm' do %>
+        <span class="glyphicon glyphicon-th-list"></span> 
+        History
+      <% end %>
+      <a href="#" class="btn btn-danger btn-sm">
+        <span class="glyphicon glyphicon-remove"></span> 
+        Delete
+      </a>
+    </div>
   </div>
 </div>
 

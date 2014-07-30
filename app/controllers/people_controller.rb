@@ -35,6 +35,14 @@ class PeopleController < ApplicationController
   def destroy
   end
   
+  
+  def history
+    @person = Person.find_by_uuid!(params[:id])
+    @versions = @person.versions.each{|v| v.whodunnit = User.find(v.whodunnit.to_i); v.changeset.delete(:updated_at) }
+    @versions.sort!{|a,b| b.created_at <=> a.created_at }
+  end
+  
+  
   def find
     query = params[:q]
     results = PgSearch.multisearch(query).where(searchable_type: ['Person'])

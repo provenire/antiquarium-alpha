@@ -14,4 +14,14 @@ class Employment < ActiveRecord::Base
   belongs_to :person
   belongs_to :place
   
+  
+  # Revisions
+  has_paper_trail
+  
+  
+  # Helpers
+  def name
+    "#{self.person.name} @ #{self.place.name}"
+  end
+  
 end

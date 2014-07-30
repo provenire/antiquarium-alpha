@@ -27,4 +27,8 @@ class Source < ActiveRecord::Base
   include PgSearch
   multisearchable :against => [:name, :description]
   
+  
+  # Revisions
+  has_paper_trail
+  
 end

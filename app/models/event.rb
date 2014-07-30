@@ -26,12 +26,27 @@ class Event < ActiveRecord::Base
   
   
   
+  # Revisions
+  has_paper_trail
+  
+  
+  
   # Money
   monetize :price_cents, with_model_currency: :price_currency
   
   
   
   # Helpers
+  def name
+    n = []
+    n << "{self.year}:" if !self.year.size==0
+    n << self.primary_actors.map(&:name).join(", ")
+    n << self.pretty_verb
+    n << self.secondary_actors.map(&:name).join(", ") if !self.location
+    n << self.address if self.location
+    return n.join(" ")
+  end
+  
   def has_citations?
     self.citations.size > 0
   end

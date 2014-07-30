@@ -45,6 +45,13 @@ class EmploymentsController < ApplicationController
   end
   
   
+  def history
+    @employment = Employment.find(params[:id])
+    @versions = @employment.versions.each{|v| v.whodunnit = User.find(v.whodunnit.to_i); v.changeset.delete(:updated_at) }
+    @versions.sort!{|a,b| b.created_at <=> a.created_at }
+  end
+  
+  
   private
   
   def employment_params

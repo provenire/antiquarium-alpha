@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
   
   # Artifacts
+  get '/artifacts/:id/history', to: 'artifacts#history', as: 'artifact_history'
   resources :artifacts do
     resources :photos
     resources :events
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   
   
   # People
+  get '/people/:id/history', to: 'people#history', as: 'person_history'
   get '/people/find', to: 'people#find', as: 'find_people'
   resources :people do
     resources :photos
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
   
   
   # Places
+  get '/places/:id/history', to: 'places#history', as: 'place_history'
   get '/places/find', to: 'places#find', as: 'find_places'
   resources :places do
     resources :photos
@@ -34,6 +37,7 @@ Rails.application.routes.draw do
   
   
   # Events
+  get '/events/:id/history', to: 'events#history', as: 'event_history'
   get '/events/actors', to: 'events#actors', as: 'find_actors'
   resources :events do
     resources :citations
@@ -41,14 +45,17 @@ Rails.application.routes.draw do
   
   
   # Employments
+  get '/employments/:id/history', to: 'employments#history', as: 'employment_history'
   resources :employments
   
   
   # Photos
+  get '/photos/:id/history', to: 'photos#history', as: 'photo_history'
   resources :photos
   
   
   # Sources
+  get '/sources/:id/history', to: 'sources#history', as: 'source_history'
   get '/sources/find_book', to: 'sources#find_book', as: 'find_book'
   resources :sources
   

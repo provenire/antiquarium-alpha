@@ -33,6 +33,11 @@ class Person < ActiveRecord::Base
   
   
   
+  # Revisions
+  has_paper_trail
+  
+  
+  
   # Helper functions
   def num_photos
     self.photos.size

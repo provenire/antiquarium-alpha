@@ -26,6 +26,10 @@ class Artifact < ActiveRecord::Base
   multisearchable :against => [:name, :alternate_names, :description, :artist]
   
   
+  # Revisions
+  has_paper_trail
+  
+  
   
   # Helpers
   def names

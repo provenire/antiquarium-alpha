@@ -60,6 +60,13 @@ class EventsController < ApplicationController
   end
   
   
+  def history
+    @event = Event.find_by_uuid!(params[:id])
+    @versions = @event.versions.each{|v| v.whodunnit = User.find(v.whodunnit.to_i); v.changeset.delete(:updated_at) }
+    @versions.sort!{|a,b| b.created_at <=> a.created_at }
+  end
+  
+  
   
   def actors
     query = params[:q]

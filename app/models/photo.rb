@@ -17,7 +17,16 @@ class Photo < ActiveRecord::Base
   
   
   
+  # Revisions
+  has_paper_trail
+  
+  
+  
   # Helper Functions
+  def name
+    "Photo #{self.id}"
+  end
+  
   def objects
     self.artifacts.to_a + self.places.to_a + self.people.to_a
   end

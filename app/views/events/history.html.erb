@@ -1,0 +1,60 @@
+<div class="row">
+  <!-- Name -->
+  <div class="col-lg-8">
+    <h2>History: <%= link_to @event.name, @event %></h2>
+    
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to root_path do %>
+          <span class="glyphicon glyphicon-home"></span>
+        <% end %>
+      </li>
+      <li><a href="#">Database</a></li>
+      <li><a href="#">Events</a></li>
+      <li><%= link_to @event.name, @event %></li>
+      <li class="active">History</li>
+    </ol>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>User</th>
+          <th>Action</th>
+          <th>Original</th>
+          <th>Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @versions.each do |v| %>
+          <tr>
+            <td><%= v.created_at %></td>
+            <td><a href="#"><%= v.whodunnit.name %></a></td>
+            <td><%= v.event %></td>
+            <td>
+              <dl>
+                <% v.changeset.each do |k, v| %>
+                  <dt><%= k %></dt>
+                  <dd><%= v[0] %></dd>
+                <% end %>
+              </dl>
+            </td>
+            <td>
+              <dl>
+                <% v.changeset.each do |k, v| %>
+                  <dt><%= k %></dt>
+                  <dd><%= v[1] %></dd>
+                <% end %>
+              </dl>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

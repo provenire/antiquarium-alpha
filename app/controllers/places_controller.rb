@@ -35,6 +35,14 @@ class PlacesController < ApplicationController
   def destroy
   end
   
+  
+  def history
+    @place = Place.find_by_uuid!(params[:id])
+    @versions = @place.versions.each{|v| v.whodunnit = User.find(v.whodunnit.to_i); v.changeset.delete(:updated_at) }
+    @versions.sort!{|a,b| b.created_at <=> a.created_at }
+  end
+  
+  
   def find
     query = params[:q]
     results = PgSearch.multisearch(query).where(searchable_type: ['Place'])
