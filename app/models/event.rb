@@ -32,6 +32,10 @@ class Event < ActiveRecord::Base
   
   
   # Helpers
+  def has_citations?
+    self.citations.size > 0
+  end
+  
   def year
     self.date.try(:year) || ""
   end

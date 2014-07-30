@@ -37,6 +37,17 @@ Antiquarium.Common = {
         $("#new_photo").submit();
       }
     );
+  },
+  
+  
+  
+  // Clickable rows
+  clickable: function() {
+    $("tr.clickable")
+    .css('cursor', 'pointer')
+    .click(function() {
+      window.document.location = $(this).attr("href");
+    });
   }
   
 };

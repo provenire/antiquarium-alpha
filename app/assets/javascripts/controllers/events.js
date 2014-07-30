@@ -69,6 +69,13 @@ Antiquarium.Controller["events"] = {
       }
     });
     
+  },
+  
+  
+  
+  show: function() {
+    // Clickable rows
+    Antiquarium.Common.clickable();
   }
   
 };

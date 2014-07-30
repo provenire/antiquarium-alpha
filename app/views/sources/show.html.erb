@@ -47,38 +47,110 @@
       <li><%= link_to 'Sources', sources_path %></li>
       <li class="active"><%= @source.name %></li>
     </ol>
-    <% if editable_object? @source %>
-      <p id="description"
-        data-type="textarea"
-        data-rows="10"
-        data-pk=<%= @source.uuid %>
-        data-url="/sources/<%= @source.uuid %>"
-        data-title="Description">
-        <%= @source.description %>
-      </p>
-      <p>
-        <button id="edit_description" class="btn btn-xs">
-          <span class="glyphicon glyphicon-pencil"></span>
-        </button>
-      </p>
-    <% else %>
-      <p><%= @source.description %></p>
-    <% end %>
+    
   </div>
-  
 
 </div>
 
 <div class="row">
-  
-  <div class="col-sm-12" style="height: 800px;">
-    <object data="<%= @source.document.url %>" type="application/pdf" width="100%" height="100%">
- 
-      <p>It appears you don't have a PDF plugin for this browser.
-      No biggie... you can <a href="myfile.pdf">click here to
-      download the PDF file.</a></p>
-  
-    </object>
+  <div class="col-sm-8">
+    <dl class="dl-horizontal">
+      <dt>Type</dt>
+      <dd><%= @source.type %></dd>
+      
+      <% if @source.type == 'Book' %>
+        <dt>Authors</dt>
+        <dd><%= @source.authors %></dd>
+        
+        <dt>ISBN</dt>
+        <dd><%= @source.isbn %></dd>
+      <% end %>
+      
+      <% if @source.type == 'Website' %>
+        <dt>URI</dt>
+        <dd><%= link_to @source.uri, @source.uri %></dd>
+      <% end %>
+      
+      <dt>Description</dt>
+      <% if editable_object? @source %>
+        <dd id="description"
+          data-type="textarea"
+          data-rows="10"
+          data-pk=<%= @source.uuid %>
+          data-url="/sources/<%= @source.uuid %>"
+          data-title="Description">
+          <%= @source.description %>
+          <br>
+          <button id="edit_description" class="btn btn-xs">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+        </dd>
+      <% else %>
+        <dd><%= @source.description %></dd>
+      <% end %>
+        
+      </dd>
+    </dl>
   </div>
   
+  <div class="col-sm-4">
+    <h3>Artifacts</h3>
+    <table class="table table-striped table-hover">
+      <% @source.artifacts.each do |a| %>
+        <tr>
+          <td>
+            <div class="row">
+              <div class="col-sm-2">
+                <% if a.photos.size > 0 %>
+                  <%= image_tag a.default_photo.image.event_thumb.url %>
+                <% else %>
+                  <img data-src="holder.js/50x50/text:?" />
+                <% end %>
+              </div>
+              <div class="col-sm-10">
+                <%= link_to a.name, a %>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
+
+<br><br>
+
+<% if ['Website','Document'].include? @source.type %>
+
+  <% if @source.status == 'ready' %>
+    <div class="row">
+  
+      <div class="col-sm-8" style="height: 800px;">
+        <% if @source.type == 'Website' %>
+          <h3>URI as it appeared at <%= @source.created_at %></h3>
+        <% else %>
+          <h3>Document</h3>
+        <% end %>
+        <div class="well embed-responsive" style="height: 800px;">
+          <object data="<%= @source.document.url %>" type="application/pdf" class="embed-responsive-item" height="100%">
+ 
+            <p>It appears you don't have a PDF plugin for this browser.
+            No biggie... you can <a href="myfile.pdf">click here to
+            download the PDF file.</a></p>
+  
+          </object>
+        </div>
+      </div>
+  
+    </div>
+  <% else%>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class="well">
+          <p>Document is still processing, and will display here when ready.</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+<% end %>

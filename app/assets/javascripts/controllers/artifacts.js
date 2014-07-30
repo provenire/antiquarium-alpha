@@ -66,12 +66,7 @@ Antiquarium.Controller["artifacts"] = {
   
   
     // Clickable rows
-    $("tr.clickable")
-    .css('cursor', 'pointer')
-    .click(function() {
-      window.document.location = $(this).attr("href");
-    });
-    
+    Antiquarium.Common.clickable();
   
     // Initialize Cloudinary
     Antiquarium.Common.cloudinaryUpload();

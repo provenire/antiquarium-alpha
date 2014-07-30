@@ -19,6 +19,8 @@ class Source < ActiveRecord::Base
   
   # Relationships
   has_many :citations
+  has_many :events, through: :citations
+  has_many :artifacts, -> { uniq }, through: :events
   
   
   # Search
