@@ -21,6 +21,20 @@
 // X-Editable
 $.fn.editable.defaults.mode        = 'inline';
 $.fn.editable.defaults.ajaxOptions = { type: "PUT" };
+$.fn.editable.defaults.error = function(response, newValue) {
+  console.log(response);
+  switch(response.status) {
+  case 500:
+    return 'Service unavailable. Please try later.';
+    break;
+  case 0:
+    return 'Server currently unreachable. Please try later.';
+    break;
+  default:
+    return 'There was an error. Please try later.';
+    break;
+  }
+}
 
 
 /*************************
