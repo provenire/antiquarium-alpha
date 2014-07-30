@@ -2,12 +2,29 @@ class CitationsController < ApplicationController
   
   def new
     @event = Event.find_by_uuid!(params[:event_id])
-    type = (['website', 'book', 'document'].include? params[:type]) ? params[:type].capitalize : 'Website'
-    @source = type.constantize.new
-    @citation = Citation.new
+    @type = (['website', 'book', 'document'].include? params[:type]) ? params[:type].capitalize : 'Website'
+    @source = @type.constantize.new
+    @citation = [@event, Citation.new]
   end
   
   def create
+    @event = Event.find_by_uuid!(params[:event_id])
+    @type = (['Website', 'Book', 'Document'].include? params[:type]) ? params[:type] : 'Website'
+    
+    case @type
+    when 'Website'
+      @source = @type.constantize.with_uri(params[:source][:uri]).first
+      @source = Website.create(source_params) if !@source
+    end
+    
+    @source.process
+    @citation = @event.citations.new(citation_params)
+    @citation.source = @source
+    if @citation.save
+      redirect_to @event
+    else
+      render 'new'
+    end
   end
   
   def edit
@@ -17,6 +34,17 @@ class CitationsController < ApplicationController
   end
   
   def destroy
+  end
+  
+  
+  private
+  
+  def citation_params
+    params.require(:citation).permit(:content)
+  end
+  
+  def source_params
+    params.require(:source).permit(:uri)
   end
   
 end

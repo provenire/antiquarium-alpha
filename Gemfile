@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 gem 'pg'
 gem 'hstore_accessor'
+gem 'rails_config'
 
 
 # Assets
@@ -34,6 +35,7 @@ gem 'phantomjs'
 gem 'geocoder'
 gem 'money-rails'
 gem 'googlebooks'
+gem 'embedly'
 
 
 # Background Queue

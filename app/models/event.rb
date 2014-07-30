@@ -17,6 +17,7 @@ class Event < ActiveRecord::Base
   
   # Relationships
   has_many :interactions
+  has_many :citations
   has_many :people, through: :interactions, source: :actor, source_type: 'Person'
   has_many :places, through: :interactions, source: :actor, source_type: 'Place'
   

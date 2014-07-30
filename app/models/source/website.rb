@@ -14,6 +14,13 @@ class Website < Source
     uri: :string
   
   
+  
+  def process
+    if self.status == 'new'
+      self.generate_pdf
+    end
+  end
+  
   def domain
     URI.parse(self.uri).host.sub(/:\/\/(www\.).+/, '')
   end
@@ -22,5 +29,12 @@ class Website < Source
     self.update_attributes(status: 'queued')
     Resque.enqueue(WebPDF, self.uuid)
   end
-    
+  
+  
+  
+  # Callbacks
+  before_create do |website|
+    website.status = 'new'
+  end
+  
 end

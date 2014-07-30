@@ -17,10 +17,12 @@ class Source < ActiveRecord::Base
   mount_uploader :thumbnail, ThumbnailUploader
   
   
+  # Relationships
+  has_many :citations
+  
   
   # Search
   include PgSearch
   multisearchable :against => [:name, :description]
-  
   
 end

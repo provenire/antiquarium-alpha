@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-8">
-        <h2>New Artifact</h2>
+        <h2>New Citation</h2>
         <ol class="breadcrumb">
             <li>
                 <%= link_to root_path do %>
@@ -8,53 +8,26 @@
                 <% end %>
             </li>
             <li><a href="#">Database</a></li>
-            <li><%= link_to 'Artifacts', artifacts_path %></li>
-            <li class="active">New</li>
+            <li><%= link_to 'Events', artifacts_path %></li>
+            <li class="active">New Citation</li>
         </ol>
     </div>
 </div>
 
 <div class="row">
-    <%= form_for @artifact do |f| %>
-    
+    <%= form_for @citation do |f| %>
+        <%= hidden_field_tag :type, nil, value: @type %>
         <div class="col-lg-6">
             
-            <div class="form-group">
-                <%= f.label :name %>
-                <%= f.text_field :name, class: 'form-control' %>
-            </div>
+            <%= render "citations/new/#{@type.downcase}", f: f %>
 
             <div class="form-group">
-                <%= f.label :description %>
-                <%= f.text_area :description, class: 'form-control', rows: 4 %>
+                <%= f.label :content %>
+                <%= f.text_area :content, class: 'form-control', rows: 4 %>
             </div>
             
-        </div>
-        
-        <div class="col-lg-5 col-lg-offset-1">
+            <%= f.submit "Create", class: 'btn btn-primary' %>
             
-            <div class="form-group">
-                <%= f.label :alternate_names %>
-                <%= f.text_field :alternate_names, class: 'form-control input-sm' %>
-                <span class="help-block">Separate each name with a comma.</span>
-            </div>
-            
-            <div class="form-group">
-                <%= f.label :artist %>
-                <%= f.text_field :artist, class: 'form-control input-sm' %>
-            </div>
-            
-            <div class="form-group">
-                <%= f.label :date_created %>
-                <%= f.text_field :date_created, class: 'form-control input-sm', placeholder: '5000 BCE' %>
-            </div>
-            
-            <div class="form-group">
-                <%= f.label :dimensions %>
-                <%= f.text_field :dimensions, class: 'form-control input-sm', placeholder: 'LxWxH in meters' %>
-            </div>
-        
-        <%= f.submit "Create", class: 'btn btn-primary pull-right' %>    
         </div>
         
         

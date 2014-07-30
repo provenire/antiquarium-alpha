@@ -44,6 +44,10 @@ Rails.application.routes.draw do
   resources :sources
   
   
+  # Citations
+  resources :citations
+  
+  
   # Resque
   mount Resque::Server, :at => '/resque'
   
