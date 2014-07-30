@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   
-  devise_for :users
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # Root
   root 'home#index'
+  
+  
+  # Admin
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
+  
+  # Users
+  devise_for :users
   
   
   # Artifacts

@@ -11,6 +11,7 @@ gem 'rails_admin'
 
 # Users
 gem 'devise'
+#gem 'cancan'
 
 
 # Assets
