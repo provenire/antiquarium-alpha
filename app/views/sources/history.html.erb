@@ -31,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @source.versions.each do |v| %>
+        <% @versions.each do |v| %>
           <tr>
             <td><%= v.created_at %></td>
             <td><a href="#"><%= v.whodunnit.name %></a></td>
