@@ -21,6 +21,16 @@ Antiquarium.Controller["employments"] = {
   
   new: function() {
     
+    // Toggle
+    $("#employment_current_job").change(function() {
+      if ($(this).is(":checked")) {
+        $("#employment_end_date").prop('disabled', true);
+      }
+      if (!$(this).is(":checked")) {
+        $("#employment_end_date").prop('disabled', false);
+      }
+    });
+    
     // Person Select2
     $("input:text#employment_person").select2({
       id: function(e) { return JSON.stringify(e) },
