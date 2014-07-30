@@ -21,6 +21,13 @@ class Website < Source
     end
   end
   
+  def extract
+    site = Extractor.url(self.uri)
+    self.name        = site[:name]
+    self.description = site[:description]
+    self.remote_thumbnail_url = site[:thumbnail] if site[:thumbnail]
+  end
+  
   def domain
     URI.parse(self.uri).host.sub(/:\/\/(www\.).+/, '')
   end
@@ -35,6 +42,7 @@ class Website < Source
   # Callbacks
   before_create do |website|
     website.status = 'new'
+    extract
   end
-  
+    
 end

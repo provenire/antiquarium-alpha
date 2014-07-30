@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   
   
   # Sources
+  get '/sources/find_book', to: 'sources#find_book', as: 'find_book'
   resources :sources
   
   
