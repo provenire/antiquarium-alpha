@@ -10,8 +10,9 @@ class Person < ActiveRecord::Base
   
   
   
-  # UUID Operations
+  # Concerns
   include UUID
+  include Filterable
   
   
   
@@ -35,6 +36,21 @@ class Person < ActiveRecord::Base
   
   # Revisions
   has_paper_trail
+  
+  
+  
+  # Scopes
+  def self.has_artifacts(yes)
+    joins(:events).uniq.joins(:artifacts)
+  end
+  
+  def self.has_photos(yes)
+    includes(:photos).where.not(photos: {id: nil})
+  end
+  
+  def self.has_employments(yes)
+    includes(:employments).where.not(employments: {id: nil})
+  end
   
   
   

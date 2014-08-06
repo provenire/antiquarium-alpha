@@ -1,7 +1,8 @@
 class SourcesController < ApplicationController
   
   def index
-    @sources = Source.order(:name).page params[:page]
+    @filters = filter_params
+    @sources = Source.filter(filter_params).order(:name).page params[:page]
   end
   
   def show
@@ -46,6 +47,13 @@ class SourcesController < ApplicationController
         render json: results
       end
     end
+  end
+  
+  
+  private
+  
+  def filter_params
+    params.slice(:websites, :books, :documents, :has_events)
   end
   
 end

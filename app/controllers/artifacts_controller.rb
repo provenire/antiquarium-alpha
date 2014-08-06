@@ -1,7 +1,8 @@
 class ArtifactsController < ApplicationController
   
   def index
-    @artifacts = Artifact.order(:name).page params[:page]
+    @filters = filter_params
+    @artifacts = Artifact.filter(filter_params).order(:name).page params[:page]
   end
   
   def show
@@ -50,6 +51,10 @@ class ArtifactsController < ApplicationController
     # Convert alternate names to array
     params[:artifact][:alternate_names] = params[:artifact][:alternate_names].split(",").map(&:strip)
     params.require(:artifact).permit(:name, {:alternate_names => []}, :description, :artist, :dimensions, :date_created)
+  end
+  
+  def filter_params
+    params.slice(:has_events, :has_photos, :has_artist, :has_dimensions, :has_date_created)
   end
   
 end

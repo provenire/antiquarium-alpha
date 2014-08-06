@@ -8,8 +8,9 @@ class Source < ActiveRecord::Base
   #  - document
   
   
-  # UUID
+  # Concerns
   include UUID
+  include Filterable
   
   
   # Mount Carrierwave
@@ -30,5 +31,23 @@ class Source < ActiveRecord::Base
   
   # Revisions
   has_paper_trail
+  
+  
+  # Scopes
+  def self.websites(yes)
+    where(type: 'Website')
+  end
+  
+  def self.books(yes)
+    where(type: 'Book')
+  end
+  
+  def self.documents(yes)
+    where(type: 'Document')
+  end
+  
+  def self.has_events(yes)
+    joins(:citations).joins(:events).uniq
+  end
   
 end

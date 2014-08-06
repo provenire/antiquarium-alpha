@@ -1,7 +1,8 @@
 class PeopleController < ApplicationController
   
   def index
-    @people = Person.order(:name).page params[:page]
+    @filters = filter_params
+    @people = Person.filter(filter_params).order(:name).page params[:page]
   end
   
   def show
@@ -65,6 +66,10 @@ class PeopleController < ApplicationController
 
   def person_params
     params.require(:person).permit(:name, :description, :gender, :date_of_birth, :date_of_birth, :nationality)
+  end
+  
+  def filter_params
+    params.slice(:has_photos, :has_employments, :has_artifacts)
   end
   
 end

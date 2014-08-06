@@ -10,8 +10,9 @@ class Artifact < ActiveRecord::Base
   
   
   
-  # UUID Operations
+  # Concerns
   include UUID
+  include Filterable
   
   
   
@@ -31,13 +32,32 @@ class Artifact < ActiveRecord::Base
   
   
   
+  # Scopes
+  def self.has_events(yes)
+    joins(:events).uniq
+  end
+  
+  def self.has_photos(yes)
+    includes(:photos).where.not(photos: {id: nil})
+  end
+  
+  def self.has_artist(yes)
+    where.not(artist: '')
+  end
+  
+  def self.has_dimensions(yes)
+    where.not(dimensions: '')
+  end
+  
+  def self.has_date_created(yes)
+    where.not(date_created: '')
+  end
+  
+  
+  
   # Helpers
   def names
     self.alternate_names || []
-  end
-  
-  def active?
-    self.published==true
   end
   
   def materials_comma_separated
@@ -58,10 +78,6 @@ class Artifact < ActiveRecord::Base
   
   def next_photos
     self.photos[1..3]
-  end
-  
-  def find_spot
-    self.events.where("details ? 'location_discovered'").first || nil
   end
   
   def current_status

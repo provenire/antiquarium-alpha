@@ -12,10 +12,6 @@
             <li class="active">Artifacts</li>
         </ol>
     </div>
-    <div class="col-lg-4">
-        <h3>Filter Results</h3>
-        <div class="well"></div>
-    </div>
 </div>
 
 <div class="row">
@@ -47,6 +43,48 @@
         </table>
         
         <%= paginate @artifacts %>
+    </div>
+    
+    <div class="col-lg-4">
+      <h3>Filter Results</h3>
+      <div class="well">
+        <form id="filter">
+        
+          <div class="checkbox">
+            <label>
+              <%= check_box_tag 'has_events', nil, @filters["has_events"] %> Has Events
+            </label>
+          </div>
+          
+          <div class="checkbox">
+            <label>
+              <%= check_box_tag 'has_photos', nil, @filters["has_photos"] %> Has Photos
+            </label>
+          </div>
+          
+          <div class="checkbox">
+            <label>
+              <%= check_box_tag 'has_artist', nil, @filters["has_artist"] %> Has Artist
+            </label>
+          </div>
+          
+          <div class="checkbox">
+            <label>
+              <%= check_box_tag 'has_dimensions', nil, @filters["has_dimensions"] %> Has Dimensions
+            </label>
+          </div>
+          
+          <div class="checkbox">
+            <label>
+              <%= check_box_tag 'has_date_created', nil, @filters["has_date_created"] %> Has Date Created
+            </label>
+          </div>
+        
+          <br>
+          <button type="submit" class="btn btn-default">Filter</button>
+        
+        </form>
+      </div>
     </div>
 
 </div>

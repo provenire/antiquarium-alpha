@@ -7,8 +7,9 @@ class Place < ActiveRecord::Base
   
   
   
-  # UUID Operations
+  # Concerns
   include UUID
+  include Filterable
   
   
   
@@ -36,6 +37,25 @@ class Place < ActiveRecord::Base
   
   
   
+  # Scopes
+  def self.has_artifacts(yes)
+    joins(:events).uniq.joins(:artifacts)
+  end
+  
+  def self.has_photos(yes)
+    includes(:photos).where.not(photos: {id: nil})
+  end
+  
+  def self.has_location(yes)
+    joins(:location)
+  end
+  
+  def self.has_employments(yes)
+    includes(:employments).where.not(employments: {id: nil})
+  end
+  
+  
+  
   # Helper functions
   def num_photos
     return self.photos.size
@@ -49,12 +69,19 @@ class Place < ActiveRecord::Base
     self.photos[1..3]
   end
   
+  def has_photos?
+    self.photos.size > 0
+  end
+  #alias_method :has_photos, :has_photos?
+  
   def has_employments?
     self.employments.size > 0
   end
+  alias_method :has_employments, :has_employments?
   
   def has_artifacts?
     self.artifacts.size > 0
   end
+  alias_method :has_artifacts, :has_artifacts?
   
 end

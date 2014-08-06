@@ -1,7 +1,8 @@
 class PlacesController < ApplicationController
   
   def index
-    @places = Place.order(:name).page params[:page]
+    @filters = filter_params
+    @places = Place.order(:name).filter(filter_params).page params[:page]
   end
   
   def show
@@ -65,6 +66,10 @@ class PlacesController < ApplicationController
 
   def place_params
     params.require(:place).permit(:name, :description)
+  end
+  
+  def filter_params
+    params.slice(:has_photos, :has_employments, :has_artifacts, :has_location)
   end
   
 end
