@@ -6,6 +6,15 @@ class EventsController < ApplicationController
   
   def show
     @event = Event.find_by_uuid!(params[:id])
+    gon.entity_id = @event.uuid
+    if @event.price
+      gon.currency = Money::Currency.table.values.sort{|a,b| a[:priority]<=>b[:priority] }.map{|c| { value: c[:iso_code], text: c[:iso_code]}}
+      gon.iso_to_symbol = Hash[*Money::Currency.table.values.sort{|a,b| a[:priority]<=>b[:priority] }.map{|c| [c[:iso_code], (c[:symbol] || '')] }.flatten]
+      gon.price = {
+        iso: @event.price.currency.iso_code.upcase,
+        value: @event.price.format(no_cents: true, symbol: false, thousands_separator: false)
+      }
+    end
   end
   
   def new
@@ -54,6 +63,14 @@ class EventsController < ApplicationController
   end
   
   def update
+    @event = Event.find_by_uuid(params[:id])
+    if params[:name] == 'location'
+      location = Location.create(address: params[:value])
+      @event.update_attributes(location: location)
+    else
+      @event.update_attributes(params[:name] => params[:value])
+    end
+    render nothing: true
   end
   
   def destroy

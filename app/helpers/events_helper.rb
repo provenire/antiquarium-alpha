@@ -4,6 +4,10 @@ module EventsHelper
     Money::Currency.table.values.sort{|a,b| a[:priority]<=>b[:priority] }.map{|c| c[:iso_code]}
   end
   
+  def currency_map
+    Hash[*Money::Currency.table.values.sort{|a,b| a[:priority]<=>b[:priority] }.map{|c| [c[:iso_code], c[:symbol]] }.flatten]
+  end
+  
   
   def actors_span(actors)
     icons = {"Unknown"=>"question-sign", "Person"=> "user", "Place"=> "map-marker", "Location"=> "map-marker"}

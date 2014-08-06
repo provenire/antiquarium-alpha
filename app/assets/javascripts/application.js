@@ -9,7 +9,10 @@
 //= require select2.min.js
 //= require bootstrap-editable.min.js
 //= require moment.js
+//= require s3_direct_upload
 // require pdf.js
+//
+// require misc/currency.js
 //
 //= require antiquarium.js
 
@@ -22,7 +25,6 @@
 $.fn.editable.defaults.mode        = 'inline';
 $.fn.editable.defaults.ajaxOptions = { type: "PUT" };
 $.fn.editable.defaults.error = function(response, newValue) {
-  console.log(response);
   switch(response.status) {
   case 500:
     return 'Service unavailable. Please try later.';

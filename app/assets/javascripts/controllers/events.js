@@ -74,6 +74,78 @@ Antiquarium.Controller["events"] = {
   
   
   show: function() {
+    // Editable
+    $('#date').editable({
+      type:  'combodate',
+      pk:     gon.entity_id,
+      url:   '/events/'+gon.entity_id,
+      title: 'Date'
+    });
+    
+    $('#location').editable({
+      type:  'text',
+      pk:     gon.entity_id,
+      url:   '/events/'+gon.entity_id,
+      title: 'Location'
+    });
+    
+    $('#price_currency').editable({
+      type:  'select',
+      pk:     gon.entity_id,
+      url:   '/events/'+gon.entity_id,
+      title: 'Currency',
+      source: gon.currency,
+      value:  gon.price.iso,
+      display: function(value, sourceData) {
+        var vals = $.fn.editableutils.itemsByValue(value, sourceData);
+        if (vals.length) {
+          $(this).html(gon.iso_to_symbol[vals[0].text]);
+        } else {
+          $(this).empty();
+        }
+      }
+    });
+    
+    $('#price').editable({
+      type:  'text',
+      pk:     gon.entity_id,
+      url:   '/events/'+gon.entity_id,
+      title: 'Price',
+      value:  gon.price.value
+    });
+    
+    $('#failed').editable({
+      type:  'select',
+      pk:     gon.entity_id,
+      url:   '/events/'+gon.entity_id,
+      title: 'Failed',
+      source: [
+        { value: 'false', text: 'false' },
+        { value: 'true',  text: 'true' }
+      ]
+    });
+    
+    // Edit Details
+    $('#details').editable({
+      type:   'textarea',
+      pk:      gon.entity_id,
+      url:    '/events/'+gon.entity_id,
+      title:  'Details',
+      toggle: 'manual',
+      showbuttons: 'bottom'
+    });
+    $('#details').on('shown', function(e, editable) {
+      $('#edit_details').hide();
+    });
+    $('#details').on('hidden', function(e, editable) {
+      $('#edit_details').show();
+    });
+    $('#edit_details').click(function(e) {
+      e.stopPropagation();
+      $('#details').editable('show');
+    });
+    
+    
     // Clickable rows
     Antiquarium.Common.clickable();
   }

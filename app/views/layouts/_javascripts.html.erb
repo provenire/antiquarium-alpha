@@ -1,7 +1,8 @@
 <%= javascript_include_tag "application" %>
 <%= cloudinary_js_config %>
+<%= include_gon %>
 
 <!-- Run Controller Code -->
 <script>
-  $(document).ready(Antiquarium.run("<%= params[:controller] %>","<%= params[:action] %>"));
+$(document).ready(Antiquarium.run("<%= params[:controller] %>","<%= params[:action] %>"));
 </script>

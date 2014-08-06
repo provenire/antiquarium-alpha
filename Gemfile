@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'gon'
 
 
 # User Interface
@@ -31,6 +32,7 @@ gem 'pdfjs-rails', git: 'git://github.com/Empact/pdfjs-rails'
 
 # Files
 gem 'carrierwave'
+gem 's3_direct_upload'
 gem 'cloudinary'
 gem 'fog'
 gem 'pdfkit'

@@ -121,30 +121,38 @@
       <div class="col-sm-12">
         <h3>Components</h3>
         <dl class="dl-horizontal">
-          
+                    
           <% if @event.components.include? 'date' %>
             <dt>Date</dt>
-            <dd><%= @event.date %></dd>
+            <dd><span id="date"><%= @event.date %></span></dd>
           <% end %>
           
           <% if @event.components.include? 'location' %>
             <dt>Location</dt>
-            <dd><%= @event.address %></dd>
+            <dd><span id="location"><%= @event.address %></span></dd>
           <% end %>
       
           <% if @event.components.include? 'price' %>
             <dt>Price</dt>
-            <dd><%= humanized_money_with_symbol @event.price %></dd>
+            <dd>
+              <span id="price_currency"><%= @event.price.symbol %></span> 
+              <span id="price"><%= humanized_money @event.price %></span>
+            </dd>
           <% end %>
         
           <% if @event.components.include? 'failed' %>
             <dt>Failed</dt>
-            <dd><%= @event.failed %></dd>
+            <dd><span id="failed"><%= @event.failed %></span></dd>
           <% end %>
         
           <% if @event.components.include? 'details' %>
             <dt>Details</dt>
-            <dd><%= @event.details %></dd>
+            <dd>
+              <span id="details"><%= @event.details %></span>
+              <button id="edit_details" class="btn btn-xs">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+            </dd>
           <% end %>
           
           <dt>

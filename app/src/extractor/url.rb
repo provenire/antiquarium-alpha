@@ -2,7 +2,8 @@ module Extractor
   module URL
     
     def url(url)
-      return Extractor::URL.format(@embedly.extract(url: url)[0].marshal_dump)
+      res = @embedly.extract(url: url)[0].marshal_dump
+      return Extractor::URL.format(res)
     end
     
     def self.format(site)
@@ -15,7 +16,7 @@ module Extractor
     end
     
     def self.thumbnail(images)
-      if images.size > 0
+      if images && images.size > 0
         images.sort{|a,b| (b["width"].to_i*b["height"].to_i) <=> (a["width"].to_i*a["height"].to_i) }[0]["url"]
       else
         nil
