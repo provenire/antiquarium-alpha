@@ -51,6 +51,7 @@
                     <div class="media-body">
                       <h4 class="media-heading"><%= a.name %></h4>
                       <strong><%= a.class.to_s %></strong>
+                      <small class="pull-right"><a href="#<%= a.class.to_s %>_<%= a.uuid %>" class="remove_actor primary">[remove]</a></small>
                     </div>
                   <% else %>
                     <%= link_to a, class: 'pull-left' do %>
@@ -63,14 +64,15 @@
                     <div class="media-body">
                       <h4 class="media-heading"><%= link_to a.name, a %></h4>
                       <strong><%= a.class.to_s %></strong>
+                      <small class="pull-right"><a href="#<%= a.class.to_s %>_<%= a.uuid %>" class="remove_actor primary">[remove]</a></small>
                     </div>
                   <% end %>
                 </div>
               </tr>
             <% end %>
           </table>
-        
         </div>
+        <div class="find_primary_actor"><a href="#" class="add_primary_actor">[+ Add]</a></div>
       </div>
     
       <div class="col-sm-2">
@@ -88,10 +90,11 @@
                 <tr>
                   <div class="media">
                     <% if a.class == Unknown %>
-                      <img class="media-object pull-left" data-src="holder.js/50x50">
+                      <img class="media-object pull-left" data-src="holder.js/50x50/text:?">
                       <div class="media-body">
                         <h4 class="media-heading"><%= a.name %></h4>
                         <strong><%= a.class.to_s %></strong>
+                        <small class="pull-right"><a href="#<%= a.class.to_s %>_<%= a.uuid %>" class="remove_actor secondary">[remove]</a></small>
                       </div>
                     <% else %>
                       <%= link_to a, class: 'pull-left' do %>
@@ -104,6 +107,7 @@
                       <div class="media-body">
                         <h4 class="media-heading"><%= link_to a.name, a %></h4>
                         <strong><%= a.class.to_s %></strong>
+                        <small class="pull-right"><a href="#<%= a.class.to_s %>_<%= a.uuid %>" class="remove_actor secondary">[remove]</a></small>
                       </div>
                     <% end %>
                   </div>
@@ -112,6 +116,7 @@
             </table>
           <% end %>
         </div>
+        <div class="find_secondary_actor"><a href="#" class="add_secondary_actor">[+ Add]</a></div>
       </div>
   
   
@@ -248,3 +253,4 @@
   </div>
   
 </div>
+<%= render 'events/show/find_actor' %>

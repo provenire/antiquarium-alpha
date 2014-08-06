@@ -148,6 +148,110 @@ Antiquarium.Controller["events"] = {
     
     // Clickable rows
     Antiquarium.Common.clickable();
+    
+    
+    
+    // Actor Modal
+    $('#find_actor_modal button[data-dismiss="modal"]').on('click', function(e) {
+      $('#find_actor_form').trigger('reset');
+      $('.add_primary_actor').show();
+      $('#find_actor_form').unbind();
+      $("#actor").select2('val', null);
+      $("#actor").select2('enable', true);
+    });
+    
+    $("#unknown_actor").change(function() {
+      if ($(this).is(":checked")) {
+        $("#actor").select2('enable', false);
+      }
+      if (!$(this).is(":checked")) {
+        $("#actor").select2('enable', true);
+      }
+    });
+    
+    $("input:text.actor").select2({
+      id: function(e) { return JSON.stringify(e) },
+      placeholder: "Start typing a name...",
+      minimumInputLength: 3,
+      allowClear: true,
+      ajax: {
+        url: '/events/actors.json',
+        dataType: 'json',
+        quietMillis: 400,
+        data: function(term, page) {
+          return {
+            q: term,
+            page_limit: 10
+          };
+        },
+        results: function(data, page) {
+          return {results: data}
+        },
+        initSelection: function(element, callback) {
+          var data = JSON.parse(element.val());
+          callback(data);
+        }
+      },
+      formatResult: function(actor) {
+        var icon = (actor.type === 'Person') ? 'user' : 'map-marker';
+        return '<span class="glyphicon glyphicon-'+ icon +'"></span> '+actor.text;
+      },
+      formatSelection: function(actor) {
+        var icon = (actor.type === 'Person') ? 'user' : 'map-marker';
+        return '<span class="glyphicon glyphicon-'+ icon +'"></span> '+actor.text;
+      }
+    });
+    
+    
+    // Manage Actors
+    function addActor(e) {
+      var kind = e.data.kind;
+      e.preventDefault();
+      $(this).hide();
+      $('#find_actor_modal').modal('show');
+      $('#find_actor_form').submit(function(e) {
+        e.preventDefault();
+        var actor = { kind: kind };
+        if ($('#unknown_actor').is(":checked")) {
+          actor.unknown = true;
+        } else {
+          actor.info = $('#actor').val();
+        }
+        $.ajax({
+          url: '/events/'+gon.entity_id,
+          type: 'PUT',
+          data: { actor: actor }
+        })
+        .done(function(response) {
+          location.reload();
+        });
+      });
+    }
+    
+    $('.remove_actor').on('click', function(e) {
+      e.preventDefault();
+      var info = $(this).attr('href').substring(1).split('_');
+      var kind = ($(this).hasClass('primary')) ? 'primary' : 'secondary';
+      var actor = {
+        id:   info[1],
+        type: info[0],
+        kind: kind
+      };
+      $.ajax({
+        url: '/events/'+gon.entity_id,
+        type: 'PUT',
+        data: { remove_actor: actor }
+      })
+      .done(function(response) {
+        if (response.deleted) {
+          location.reload();
+        }
+      });
+    });
+    
+    $('.add_primary_actor').on('click', { kind: 'primary'}, addActor);
+    $('.add_secondary_actor').on('click', { kind: 'secondary'}, addActor);
+      
   }
   
 };

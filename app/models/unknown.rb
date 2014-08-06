@@ -1,5 +1,9 @@
 class Unknown
   
+  def uuid
+    "unknown"
+  end
+  
   def name
     "Unknown"
   end

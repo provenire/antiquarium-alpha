@@ -64,12 +64,39 @@ class EventsController < ApplicationController
   
   def update
     @event = Event.find_by_uuid(params[:id])
+    
     if params[:name] == 'location'
       location = Location.create(address: params[:value])
       @event.update_attributes(location: location)
-    else
-      @event.update_attributes(params[:name] => params[:value])
+      return render nothing: true
     end
+
+    if params[:actor]
+      recipient = (params[:actor][:kind] == "secondary")
+      if params[:actor][:unknown]
+        @event.interactions.create(unknown_actor: true, recipient: recipient)
+        return render json: { unknown: true }
+      end
+      if params[:actor][:info]
+        actor = JSON.parse(params[:actor][:info])
+        actor = actor["type"].constantize.find_by_uuid!(actor["id"])
+        @event.interactions.create(actor: actor, recipient: recipient)
+        return render json: actor
+      end
+    end
+    
+    if params[:remove_actor]
+      recipient = (params[:remove_actor][:kind] == "secondary")
+      if params[:remove_actor][:type] == "Unknown"
+        @event.interactions.where(unknown_actor: true, recipient: recipient).delete_all
+      else
+        actor = params[:remove_actor][:type].constantize.find_by_uuid!(params[:remove_actor][:id])
+        @event.interactions.where(actor: actor, recipient: recipient).delete_all
+      end
+      return render json: { deleted: true }
+    end
+
+    @event.update_attributes(params[:name] => params[:value])
     render nothing: true
   end
   
