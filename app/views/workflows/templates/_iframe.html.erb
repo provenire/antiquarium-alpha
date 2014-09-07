@@ -1,0 +1,31 @@
+<script id="iframe-template" type='text/ractive'>
+  
+  <dl>
+    <dt>Title</dt>
+    <dd>{{title}}</dd>
+    
+    <br>
+    
+    <dt>Authors</dt>
+    <dd>{{authors}}</dd>
+    
+    <br>
+    
+    <dt>Images</dt>
+    <dd>
+      <div class="row">
+        {{#each images}}
+        <div class="col-sm-3">
+          <img class='img-responsive' src="{{url}}"/>
+        </div>
+        {{/each}}
+      </div>
+    </dd>
+    
+    <br>
+    
+    <dt>Content</dt>
+    <dd>{{{content}}}</dd>
+  </dl>
+  
+</script>

@@ -44,6 +44,7 @@ gem 'geocoder'
 gem 'money-rails'
 gem 'googlebooks'
 gem 'embedly'
+gem 'alchemy-api-rb', :require => 'alchemy_api'
 
 
 # Background Queue

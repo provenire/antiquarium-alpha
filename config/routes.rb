@@ -64,6 +64,11 @@ Rails.application.routes.draw do
   resources :citations
   
   
+  # Workflows
+  get '/workflows/website', to: 'workflows#website', as: 'website_workflow'
+  get '/workflows/extract', to: 'workflows#extract', as: 'extract_workflow'
+  
+  
   # Resque
   mount Resque::Server, :at => '/resque'
   

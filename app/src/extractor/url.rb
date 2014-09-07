@@ -1,9 +1,13 @@
 module Extractor
   module URL
     
-    def url(url)
+    def url(url, raw = false)
       res = @embedly.extract(url: url)[0].marshal_dump
-      return Extractor::URL.format(res)
+      if raw == true
+        return res
+      else
+        return Extractor::URL.format(res)
+      end
     end
     
     def self.format(site)

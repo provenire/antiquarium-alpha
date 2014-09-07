@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h3>Enter a URL:</h3>
+    <form id="url-form">
+      <div class="row">
+        <div class="col-sm-10">
+          <div class="form-group">
+            <input type='text' class='form-control' name='url' id='url' />
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-block btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Nav tabs -->
+<div class="row">
+  <div class="col-sm-12">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active"><a href="#entity-workflow-tab" role="tab" data-toggle="tab">Entities</a></li>
+      <li><a href="#events-workflow-tab" role="tab" data-toggle="tab">Events</a></li>
+      <li class="pull-right"><a href="#extracted-content-tab" role="tab" data-toggle="tab">Extracted Content</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="tab-content">
+    
+    <!-- Entity Workflow -->
+    <div class="tab-pane active" id="entity-workflow-tab">
+      <div class="col-sm-12">
+        <h2>Entities</h2>
+        <div id="entities">
+          <div class="row">
+            <div class="col-sm-2">
+              <ul class="nav nav-pills nav-stacked" role="tablist">
+                <li class="active"><a href="#entity-reconcile-tab" role="tab" data-toggle="tab">Reconcile</a></li>
+                <li><a href="#entity-browse-tab" role="tab" data-toggle="tab">Browse</a></li>
+              </ul>
+            </div>
+            
+            <div class="tab-content">
+              <!-- Reconcile Workflow -->
+              <div class="tab-pane active" id="entity-reconcile-tab">
+                <div class="col-sm-10">
+                  <h2>Reconcile</h2>
+                  <div id="reconcile"></div>
+                </div>
+              </div>
+            
+              <!-- Reconcile Workflow -->
+              <div class="tab-pane" id="entity-browse-tab">
+                <div class="col-sm-10">
+                  <h2>Browse</h2>
+                  <div id="browse"></div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- Events Workflow -->
+    <div class="tab-pane" id="events-workflow-tab">
+      <div class="col-sm-12">
+        <h2>Events</h2>
+        <div id="events"></div>
+      </div>
+    </div>
+    
+    
+    <!-- Extracted Content -->
+    <div class="tab-pane" id="extracted-content-tab">
+      <div class="col-sm-8">
+        <h2>Extracted Content</h2>
+        <div id="iframe">
+          <%= render 'workflows/templates/temp_content' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- templates -->
+<%= render 'workflows/templates/iframe' %>

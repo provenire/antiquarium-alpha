@@ -3,11 +3,16 @@ Navigasmic.setup do |config|
   # Primary Nav
   config.semantic_navigation :primary do |n|
     n.item 'Home', controller: 'home'
+    
     n.group 'Database' do
       n.item '<span class="glyphicon glyphicon-glass"></span> Artifacts',   controller: 'artifacts'
       n.item '<span class="glyphicon glyphicon-user"></span> People',       controller: 'people'
       n.item '<span class="glyphicon glyphicon-map-marker"></span> Places', controller: 'places'
       n.item '<span class="glyphicon glyphicon-book"></span> Sources',      controller: 'sources'
+    end
+    
+    n.group 'Workflows' do
+      n.item 'Website', controller: 'workflows', action: 'website'
     end
   end
   
