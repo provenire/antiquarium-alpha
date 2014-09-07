@@ -7,6 +7,7 @@ gem 'pg'
 gem 'hstore_accessor'
 gem 'rails_config'
 gem 'rails_admin'
+gem 'figaro', '~> 1.0.0.rc1'
 
 
 # Users
@@ -49,6 +50,8 @@ gem 'alchemy-api-rb', :require => 'alchemy_api'
 
 # Background Queue
 gem 'resque', '~> 1.22.0', require: 'resque/server'
+gem 'resque-sliders'
+#gem 'resque-web', require: 'resque_web'
 
 
 # Search

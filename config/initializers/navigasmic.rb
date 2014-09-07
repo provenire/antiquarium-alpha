@@ -11,9 +11,9 @@ Navigasmic.setup do |config|
       n.item '<span class="glyphicon glyphicon-book"></span> Sources',      controller: 'sources'
     end
     
-    n.group 'Workflows' do
-      n.item 'Website', controller: 'workflows', action: 'website'
-    end
+    # n.group 'Workflows' do
+    #   n.item 'Website', controller: 'workflows', action: 'website'
+    # end
   end
   
 

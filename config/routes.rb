@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   
+  # Resque
+  # mount ResqueWeb::Engine => "/resque"
+  mount Resque::Server, :at => '/resque'
+  
+  
   # Users
   devise_for :users
   
@@ -67,9 +72,5 @@ Rails.application.routes.draw do
   # Workflows
   get '/workflows/website', to: 'workflows#website', as: 'website_workflow'
   get '/workflows/extract', to: 'workflows#extract', as: 'extract_workflow'
-  
-  
-  # Resque
-  mount Resque::Server, :at => '/resque'
   
 end
