@@ -33,6 +33,16 @@ class Source < ActiveRecord::Base
   has_paper_trail
   
   
+  # Helpers
+  def has_photos?
+    self.thumbnail.url.nil?
+  end
+  
+  def default_photo_uploader
+    self.thumbnail
+  end
+  
+  
   # Scopes
   def self.websites(yes)
     where(type: 'Website')

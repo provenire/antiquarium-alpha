@@ -1,4 +1,7 @@
-          <!-- Search -->
-          <form class="navbar-form navbar-left" action="/search">
-              <input type="text" class="form-control col-lg-8" placeholder="Search" id="q" name="q" value="<% # search_value %>">
-          </form>
+<!-- Search -->
+<form class="navbar-form navbar-left" action="/search">
+  <div class="form-group has-feedback">
+    <input type="text" class="form-control" placeholder="Search" id="q" name="q" value="<%= @query %>">
+    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+  </div>
+</form>

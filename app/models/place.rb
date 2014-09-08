@@ -65,6 +65,10 @@ class Place < ActiveRecord::Base
     self.photos[0] if self.photos.size > 0
   end
   
+  def default_photo_uploader
+    self.default_photo.image
+  end
+  
   def next_photos
     self.photos[1..3]
   end

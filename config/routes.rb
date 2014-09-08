@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   devise_for :users
   
   
+  # Search
+  get '/search', to: 'search#index', as: 'search'
+  
+  
   # Artifacts
   get '/artifacts/:id/history', to: 'artifacts#history', as: 'artifact_history'
   resources :artifacts do
