@@ -1,0 +1,21 @@
+<div class="row">
+  <!-- Name -->
+  <div class="col-lg-9">
+    <h1>
+      <%= @user.name %>
+    </h1>
+  </div>
+  <div class="col-lg-3">
+    <br/>
+    <div class="pull-right">
+      
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8">
+    <h3>Recent Activity</h3>
+    <%= render_activities @user.activities.order(created_at: :desc).limit(5), layout: :activity %>
+  </div>
+</div>

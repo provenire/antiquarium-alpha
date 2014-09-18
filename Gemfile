@@ -26,7 +26,7 @@ gem 'gon'
 
 
 # User Interface
-gem 'navigasmic'
+gem 'navigasmic', git: 'git://github.com/jejacks0n/navigasmic'
 gem 'kaminari'
 gem 'country_select'
 gem 'indefinite_article'

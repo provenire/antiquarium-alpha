@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   
   
   # Users
+  get '/profile',  to: 'users#profile',  as: 'user_profile'
+  get '/settings', to: 'users#settings', as: 'user_settings'
   devise_for :users
   resources :users
   

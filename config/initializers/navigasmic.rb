@@ -16,6 +16,19 @@ Navigasmic.setup do |config|
     # end
   end
   
+  
+  # User Nav
+  config.semantic_navigation :user do |n|
+    n.item 'Admin', '/admin', hidden_unless: Proc.new{ current_user.admin? }
+    
+    n.group Proc.new{ current_user.name } do
+      n.item '<span class="glyphicon glyphicon-user"></span> Profile', '/profile', highlights_on: Proc.new{ current_page?(current_user) }
+      n.item '<span class="glyphicon glyphicon-cog"></span> Settings', '/settings'
+      n.item '<li class="divider"></li>'
+      n.item '<span class="glyphicon glyphicon-log-out"></span> Logout', '/users/sign_out'
+    end
+  end
+  
 
   # Bootstrap Top Nav Builder
   config.builder bootstrap: Navigasmic::Builder::ListBuilder do |builder|
@@ -24,6 +37,7 @@ Navigasmic.setup do |config|
     builder.is_nested_class  = 'dropdown-menu'
 
     builder.label_generator = proc do |label, options, has_link, has_nested|
+      #label = label.call(current_user.name) if label.is_a? Proc
       if !has_nested || has_link
         "<span>#{label}</span>"
       else

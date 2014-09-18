@@ -5,6 +5,12 @@ GIT
     pdfjs-rails (0.0.9)
 
 GIT
+  remote: git://github.com/jejacks0n/navigasmic
+  revision: 5cc606f2943d6c5f7914db1b0a141e94f86b8a06
+  specs:
+    navigasmic (1.1.0)
+
+GIT
   remote: git://github.com/pallymore/wkhtmltopdf-heroku
   revision: 8376400332075195d53e428a3f6842f858fdb9e0
   specs:
@@ -175,7 +181,6 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    navigasmic (1.1.0)
     nested_form (0.3.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -335,7 +340,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   money-rails
-  navigasmic
+  navigasmic!
   paper_trail (~> 3.0.3)
   pdfjs-rails!
   pdfkit

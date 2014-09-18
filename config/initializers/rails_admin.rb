@@ -32,4 +32,19 @@ RailsAdmin.config do |config|
     delete
     show_in_app  
   end
+  
+  
+  config.model 'User' do
+    edit do
+      group :default do
+        field :email
+        field :name
+        field :password
+        field :password_confirmation
+        field :role do
+          read_only true
+        end
+      end
+    end
+  end
 end
