@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h5>
+      <%= resource_link 'Event', a.parameters[:event_id], a.parameters[:name] %>
+    </h5>
+    <p><em><%= a.parameters[:date] || 'unknown' %></em></p>
+    <br/>
+    <% unless a.parameters[:details].empty? %><p>"<%= a.parameters[:details]%>"</p><% end %>
+  </div>
+</div>

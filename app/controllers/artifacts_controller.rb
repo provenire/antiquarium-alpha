@@ -35,6 +35,9 @@ class ArtifactsController < ApplicationController
   end
   
   def destroy
+    @artifact = Artifact.find_by_uuid(params[:id])
+    @artifact.destroy
+    redirect_to '/artifacts'
   end
   
   def history

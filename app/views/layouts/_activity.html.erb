@@ -1,0 +1,15 @@
+<div class="media">
+  <div class="pull-left">
+    <p>&nbsp;</p>
+    <h1 class="media-heading"><span class="glyphicon glyphicon-<%= activity_icon(a) %>"></span></h1>
+  </div>
+  
+  <div class="media-body">
+    <p><small class="text-muted"><%= time_ago_in_words a.created_at %> ago</small></p>
+    <h4 class="media-heading">
+      <%= activity_header a %>
+    </h4>
+    <%= yield %>
+  </div>
+</div>
+<br/>

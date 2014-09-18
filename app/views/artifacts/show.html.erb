@@ -25,10 +25,10 @@
         <span class="glyphicon glyphicon-th-list"></span> 
         History
       <% end %>
-      <a href="#" class="btn btn-danger btn-sm">
+      <%= link_to @artifact, method: :delete, class: 'btn btn-danger btn-sm' do %>
         <span class="glyphicon glyphicon-remove"></span> 
         Delete
-      </a>
+      <% end %>
     </div>
   </div>
 </div>

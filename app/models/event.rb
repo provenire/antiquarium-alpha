@@ -30,6 +30,18 @@ class Event < ActiveRecord::Base
   has_paper_trail
   
   
+  # Activity
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user },
+          params: {
+            event_id: Proc.new{|controller, model| model.id },
+            name:     Proc.new{|controller, model| model.name },
+            date:     Proc.new{|controller, model| model.date },
+            failed:   Proc.new{|controller, model| model.failed },
+            details:  Proc.new{|controller, model| model.details }
+          }
+  
+  
   
   # Money
   monetize :price_cents, with_model_currency: :price_currency

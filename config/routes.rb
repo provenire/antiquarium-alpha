@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   # Users
   devise_for :users
+  resources :users
   
   
   # Search
@@ -67,6 +68,13 @@ Rails.application.routes.draw do
   get '/sources/:id/history', to: 'sources#history', as: 'source_history'
   get '/sources/find_book', to: 'sources#find_book', as: 'find_book'
   resources :sources
+  resources :book,     controller: 'sources', path: 'sources'
+  resources :website,  controller: 'sources', path: 'sources'
+  resources :document, controller: 'sources', path: 'sources'
+  
+  
+  # Interactions
+  resources :interactions, only: [:show]
   
   
   # Citations

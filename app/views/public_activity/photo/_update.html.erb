@@ -1,0 +1,7 @@
+<% if a.trackable %>
+  <%= link_to a.trackable do %>
+    <%= image_tag a.parameters[:image] %>
+  <% end %>
+<% else %>
+  <%= image_tag a.parameters[:image] %>
+<% end %>

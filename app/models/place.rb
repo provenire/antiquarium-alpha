@@ -36,6 +36,17 @@ class Place < ActiveRecord::Base
   has_paper_trail
   
   
+  # Activity
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user },
+          params: {
+            owner_name:  Proc.new{|controller, model| controller.current_user.name },
+            name:        Proc.new{|controller, model| model.name},
+            description: Proc.new{|controller, model| model.description},
+            thumb:       Proc.new{|controller, model| model.has_photos? ? model.default_photo_uploader.small_thumb.url : ''}
+          }
+  
+  
   
   # Scopes
   def self.has_artifacts(yes)

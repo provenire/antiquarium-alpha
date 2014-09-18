@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h5>
+      <span class="glyphicon glyphicon-user"></span> <%= resource_link 'Person', a.parameters[:person_id], a.parameters[:person_name] %> 
+      at 
+      <span class="glyphicon glyphicon-map-marker"></span> <%= resource_link 'Place', a.parameters[:place_id], a.parameters[:place_name] %> 
+    </h5>
+    <p><em><%= a.parameters[:dates] %></em></p>
+    <p><strong>Title:</strong> <%= a.parameters[:title] %></p>
+    <br/>
+    <% unless a.parameters[:details].empty? %><p>"<%= a.parameters[:details]%>"</p><% end %>
+  </div>
+</div>

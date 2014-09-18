@@ -10,7 +10,7 @@
 //= require bootstrap-editable.min.js
 //= require moment.js
 //= require ractive.js
-//= require s3_direct_upload
+// require s3_direct_upload
 // require pdf.js
 //
 // require misc/currency.js

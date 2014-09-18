@@ -33,6 +33,17 @@ class Source < ActiveRecord::Base
   has_paper_trail
   
   
+  # Activity
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user },
+          params: {
+            source_id:   Proc.new{|controller, model| model.id},
+            name:        Proc.new{|controller, model| model.name},
+            description: Proc.new{|controller, model| model.description},
+            thumb:       Proc.new{|controller, model| model.thumbnail.small.url}
+          }
+  
+  
   # Helpers
   def has_photos?
     self.thumbnail.url.nil?

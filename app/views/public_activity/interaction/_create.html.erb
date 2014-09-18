@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-8">
+    <table>
+      <tr>
+        <td valign="top"><strong>Event</strong></td>
+        <td valign="top" style="padding-left:15px; padding-right:8px;">
+          <span class="glyphicon glyphicon-time"></span>
+        </td>
+        <td><%= resource_link 'Event', a.parameters[:event_id], a.parameters[:event_name] %></td>
+      </tr>
+      <tr>
+        <td valign="top"><strong>Actor</strong></td>
+        <td valign="top" style="padding-left:15px; padding-right:8px;">
+          <% if    a.parameters[:actor_type]=='Person' %><span class="glyphicon glyphicon-user"></span>
+          <% elsif a.parameters[:actor_type]=='Place'  %><span class="glyphicon glyphicon-map-marker"></span>
+          <% else %><span class="glyphicon glyphicon-question-sign"></span>
+          <% end %>
+        </td>
+        <td>
+          <% unless a.parameters[:unknown] %>
+            <%= resource_link a.parameters[:actor_type], a.parameters[:actor_id], a.parameters[:actor] %>
+          <% else %>
+            Unknown Actor
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,5 +1,10 @@
 class CitationsController < ApplicationController
   
+  def show
+    @citation = Citation.find(params[:id])
+    redirect_to @citation.event
+  end
+  
   def new
     @event = Event.find_by_uuid!(params[:event_id])
     @type = (['website', 'book', 'document'].include? params[:type]) ? params[:type].capitalize : 'Website'
@@ -37,6 +42,10 @@ class CitationsController < ApplicationController
   end
   
   def destroy
+    @citation = Citation.find(params[:id])
+    if @citation.destroy
+      redirect_to @citation.event
+    end
   end
   
   

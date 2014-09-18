@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-8">
+    <table>
+      <tr>
+        <td valign="top"><strong>Event</strong></td>
+        <td valign="top" style="padding-left:15px; padding-right:8px;">
+          <span class="glyphicon glyphicon-time"></span>
+        </td>
+        <td><%= resource_link 'Event', a.parameters[:event_id], a.parameters[:event_name] %></td>
+      </tr>
+      <tr>
+        <td valign="top"><strong>Source</strong></td>
+        <td valign="top" style="padding-left:15px; padding-right:8px;">
+          <span class="glyphicon glyphicon-book"></span>
+        </td>
+        <td><%= resource_link 'Source', a.parameters[:source_id], a.parameters[:source_name] %></td>
+      </tr>
+    </table>
+    <br/>
+    <p>"<%= a.parameters[:content]%>"</p>
+  </div>
+</div>

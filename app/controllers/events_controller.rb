@@ -88,9 +88,11 @@ class EventsController < ApplicationController
     if params[:remove_actor]
       recipient = (params[:remove_actor][:kind] == "secondary")
       if params[:remove_actor][:type] == "Unknown"
+        @event.interactions.where(unknown_actor: true, recipient: recipient).each{|i| i.create_activity('destroy')}
         @event.interactions.where(unknown_actor: true, recipient: recipient).delete_all
       else
         actor = params[:remove_actor][:type].constantize.find_by_uuid!(params[:remove_actor][:id])
+        @event.interactions.where(actor: actor, recipient: recipient).each{|i| i.create_activity('destroy')}
         @event.interactions.where(actor: actor, recipient: recipient).delete_all
       end
       return render json: { deleted: true }

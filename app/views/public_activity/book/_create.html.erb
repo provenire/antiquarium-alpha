@@ -1,0 +1,20 @@
+<div class="media">
+  <div class="pull-left">
+    <% unless a.parameters[:thumb].nil? %>
+      <%= image_tag a.parameters[:thumb], class: 'img-responsive' %>
+    <% else %>
+      <img data-src="holder.js/35x35/text:?" class="img-responsive"/>
+    <% end %>
+  </div>
+
+  <div class="media-body">
+    <h5 class="media-heading">
+      <%= resource_link 'Source', a.parameters[:id], a.parameters[:name] %>
+    </h5>
+    <div class="row">
+      <div class="col-sm-8">
+        <p><%= truncate a.parameters[:description], length: 150, separator: ' ' %></p>
+      </div>
+    </div>
+  </div>
+</div>

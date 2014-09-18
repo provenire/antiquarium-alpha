@@ -44,6 +44,13 @@ class EmploymentsController < ApplicationController
     render nothing: true
   end
   
+  def destroy
+    @employment = Employment.find(params[:id])
+    if @employment.destroy
+      redirect_to @employment.person
+    end
+  end
+  
   
   def history
     @employment = Employment.find(params[:id])

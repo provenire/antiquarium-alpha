@@ -21,6 +21,14 @@ class Photo < ActiveRecord::Base
   has_paper_trail
   
   
+  # Activity
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user },
+          params: {
+            image: Proc.new{ |controller, model| model.image.object_main.url }
+          }
+  
+  
   
   # Helper Functions
   def name

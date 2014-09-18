@@ -13,6 +13,7 @@ gem 'figaro', '~> 1.0.0.rc1'
 # Users
 gem 'devise'
 gem 'paper_trail', '~> 3.0.3'
+gem 'public_activity'
 
 
 # Assets
@@ -28,6 +29,7 @@ gem 'gon'
 gem 'navigasmic'
 gem 'kaminari'
 gem 'country_select'
+gem 'indefinite_article'
 gem 'pdfjs-rails', git: 'git://github.com/Empact/pdfjs-rails'
 
 

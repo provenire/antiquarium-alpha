@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
   
   
   
+  # Activity
+  include PublicActivity::Model
+  activist
+  
+  def activities
+    self.activities_as_owner
+  end
+  
   def admin?
     self.role == 'admin'
   end
