@@ -251,6 +251,105 @@ Antiquarium.Controller["events"] = {
     
     $('.add_primary_actor').on('click', { kind: 'primary'}, addActor);
     $('.add_secondary_actor').on('click', { kind: 'secondary'}, addActor);
+    
+    
+    
+    // Actor Modal
+    $('#find_artifact_modal button[data-dismiss="modal"]').on('click', function(e) {
+      $('#find_artifact_form').trigger('reset');
+      $('.add_artifact').show();
+      $('#find_artifact_form').unbind();
+      $("#artifact").select2('val', null);
+      $("#artifact").select2('enable', true);
+    });
+    
+    $("input:text.artifact").select2({
+      id: function(e) { return JSON.stringify(e) },
+      placeholder: "Start typing a name...",
+      minimumInputLength: 3,
+      allowClear: true,
+      ajax: {
+        url: '/events/artifacts.json',
+        dataType: 'json',
+        quietMillis: 400,
+        data: function(term, page) {
+          return {
+            q: term,
+            page_limit: 10
+          };
+        },
+        results: function(data, page) {
+          return {results: data}
+        },
+        initSelection: function(element, callback) {
+          var data = JSON.parse(element.val());
+          callback(data);
+        }
+      },
+      formatResult: function(artifact) {
+        return '<span class="glyphicon glyphicon-glass"></span> '+artifact.text;
+      },
+      formatSelection: function(artifact) {
+        return '<span class="glyphicon glyphicon-glass"></span> '+artifact.text;
+      }
+    });
+    
+    $('.add_artifact').on('click', addArtifact);
+    
+    // Manage Artifacts
+    function addArtifact(e) {
+      e.preventDefault();
+      $(this).hide();
+      $('#find_artifact_modal').modal('show');
+      $('#find_artifact_form').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+          url: '/events/'+gon.entity_id,
+          type: 'PUT',
+          data: { artifact: $('#artifact').val() }
+        })
+        .done(function(response) {
+          location.reload();
+        });
+      });
+      
+      $('.remove_artifact').on('click', function(e) {
+        e.preventDefault();
+        var info = $(this).attr('href').substring(1).split('_');
+        var kind = ($(this).hasClass('primary')) ? 'primary' : 'secondary';
+        var artifact = {
+          id:   info[1],
+          type: info[0],
+          kind: kind
+        };
+        $.ajax({
+          url: '/events/'+gon.entity_id,
+          type: 'PUT',
+          data: { remove_actor: actor }
+        })
+        .done(function(response) {
+          if (response.deleted) {
+            location.reload();
+          }
+        });
+      });
+    }
+    
+    $('.remove_artifact').on('click', function(e) {
+      e.preventDefault();
+      var info = $(this).attr('href').substring(1).split('_');
+      var artifact = { id: info[1] };
+      $.ajax({
+        url: '/events/'+gon.entity_id,
+        type: 'PUT',
+        data: { remove_artifact: artifact }
+      })
+      .done(function(response) {
+        if (response.deleted) {
+          location.reload();
+        }
+      });
+    });
       
   }
   

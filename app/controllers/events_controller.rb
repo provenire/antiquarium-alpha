@@ -97,6 +97,18 @@ class EventsController < ApplicationController
       end
       return render json: { deleted: true }
     end
+    
+    if params[:artifact]
+      artifact = Artifact.find_by_uuid JSON.parse(params[:artifact])["id"]
+      @event.artifacts << artifact
+      return render json: JSON.parse(params[:artifact])
+    end
+    
+    if params[:remove_artifact]
+      artifact = Artifact.find_by_uuid params[:remove_artifact][:id]
+      @event.artifacts.delete(artifact)
+      return render json: { deleted: true }
+    end
 
     @event.update_attributes(params[:name] => params[:value])
     render nothing: true
@@ -127,6 +139,21 @@ class EventsController < ApplicationController
           }
         }
       }
+    end
+  end
+  
+  def artifacts
+    query = params[:q]
+    results = PgSearch.multisearch(query).where(searchable_type: ['Artifact'])
+    respond_to do |format|
+      format.json do
+        render :json => results.map{|a|
+          {
+            id:    a.searchable.uuid,
+            text:  a.searchable.name
+          }
+        }
+      end
     end
   end
   

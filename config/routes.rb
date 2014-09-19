@@ -49,8 +49,9 @@ Rails.application.routes.draw do
   
   
   # Events
-  get '/events/:id/history', to: 'events#history', as: 'event_history'
-  get '/events/actors', to: 'events#actors', as: 'find_actors'
+  get '/events/:id/history', to: 'events#history',   as: 'event_history'
+  get '/events/actors',      to: 'events#actors',    as: 'find_actors'
+  get '/events/artifacts',   to: 'events#artifacts', as: 'find_artifacts'
   resources :events do
     resources :citations
   end

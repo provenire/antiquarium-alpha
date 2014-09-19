@@ -235,17 +235,22 @@
       <table class="table">
         <% @event.artifacts.each do |a| %>
           <tr>
-            <td width="64">
-              <%= link_to a do %>
-                <% if a.num_photos > 0 %>
-                  <%= image_tag a.default_photo.image.event_thumb.url %>
-                <% else %>
-                  <img data-src="holder.js/64x64" />
-                <% end %>
-              <% end %>
-            </td>
             <td>
-              <h4><%= link_to a.name, a %></h4>
+              <div class="media">
+                <%= link_to a, class: 'pull-left' do %>
+                  <% if a.num_photos > 0 %>
+                    <%= image_tag a.default_photo.image.event_thumb.url, class: 'media-object' %>
+                  <% else %>
+                    <img data-src="holder.js/50x50/text:?" class="media-object pull-left" />
+                  <% end %>
+                <% end %>
+                <div class="media-body">
+                  <h4 class="media-heading"><%= link_to a.name, a %></h4>
+                  <% if @event.artifacts.size > 1 %>
+                    <small class="pull-right"><a href="#<%= a.class.to_s %>_<%= a.uuid %>" class="remove_artifact">[remove]</a></small>
+                  <% end %>
+                </div>
+              </div>
             </td>
           </tr>
         <% end %>
@@ -253,7 +258,9 @@
     <% else %>
       <p>No Artifacts.</p>
     <% end %>
+    <div class="find_artifact"><a href="#" class="add_artifact">[+ Add]</a></div>
   </div>
   
 </div>
 <%= render 'events/show/find_actor' %>
+<%= render 'events/show/find_artifact' %>
