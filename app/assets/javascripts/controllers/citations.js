@@ -5,7 +5,7 @@
 Antiquarium.Controller["citations"] = {
 
   new: function() {  
-    
+
     // Book Select2
     $("input:text.book#source_id").select2({
       id: function(e) { return JSON.stringify(e) },
@@ -42,6 +42,54 @@ Antiquarium.Controller["citations"] = {
       }
     });
     
+    
+    // Document Modal
+    $('#new_document_modal input[type=submit]').click(function () {
+      $(this).button('loading');
+    });
+    
+    
+    // Document Select2
+    $("input:text.document#source_id").select2({
+      id: function(e) { return JSON.stringify(e) },
+      placeholder: "Start typing a name...",
+      minimumInputLength: 3,
+      allowClear: true,
+      ajax: {
+        url: '/sources/find_document.json',
+        dataType: 'json',
+        quietMillis: 400,
+        data: function(term, page) {
+          return {
+            q: term,
+            page_limit: 10
+          };
+        },
+        results: function(data, page) {
+          return {results: data}
+        },
+        initSelection: function(element, callback) {
+          var data = JSON.parse(element.val());
+          callback(data);
+        }
+      },
+      initSelection: function(element, callback) {
+        var data = JSON.parse(element.val());
+        callback(data);
+      },
+      formatResult: function(doc) {
+        return '<span class="glyphicon glyphicon-book"></span> '+doc.text;
+      },
+      formatSelection: function(doc) {
+        return '<span class="glyphicon glyphicon-book"></span> '+doc.text;
+      }
+    });
+    
+    if (gon.document) {
+      //$("input:text.document#source_id").select2('data', [gon.document]);
+      $("input:text.document#source_id").select2('val', JSON.stringify(gon.document));
+      $("input:text.document#source_id").select2('readonly', true);
+    }
   }
   
 };

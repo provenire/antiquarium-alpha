@@ -6,4 +6,5 @@ CarrierWave.configure do |config|
     :region                 => Settings.aws.region
   }
   config.fog_directory  = Settings.aws.directory
+  config.fog_public     = false 
 end

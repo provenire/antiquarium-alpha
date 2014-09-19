@@ -1,0 +1,5 @@
+aws:
+  access_key_id:     'AKIAJQBHPNNCLCEENDWA'
+  secret_access_key: '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'
+  region:            'us-west-1'
+  directory:         'antiquarium-development'

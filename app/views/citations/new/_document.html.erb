@@ -2,5 +2,9 @@
 <br>
 
 <div class="form-group">
-  <label>Upload</label>
+  <label>Search Documents</label>
+  <%= text_field_tag 'source[id]', nil, class: 'document form-control' %>
+  <% unless @uploader.nil? %>
+    <span class="help-block">or <a href="#" data-toggle="modal" data-target="#new_document_modal">upload a new document</a></span>
+  <% end %>
 </div>

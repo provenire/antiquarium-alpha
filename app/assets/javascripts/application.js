@@ -1,16 +1,15 @@
 //
 // Antiquarium JS
 //
-//= require jquery
+//= require jquery-1.11.1.min.js
 //= require jquery_ujs
-//= require bootstrap.min.js
+//= require bootstrap.js
 //= require cloudinary
 //= require holder.js
 //= require select2.min.js
 //= require bootstrap-editable.js
 //= require moment.js
 //= require ractive.js
-// require s3_direct_upload
 // require pdf.js
 //
 // require misc/currency.js

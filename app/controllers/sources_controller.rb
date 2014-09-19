@@ -49,6 +49,23 @@ class SourcesController < ApplicationController
     end
   end
   
+  def find_document
+    query = params[:q]
+    
+    results = PgSearch.multisearch(query).where(searchable_type: ['Document'])
+    
+    respond_to do |format|
+      format.json do
+        render json: results.map{|d|
+          {
+            id:   d.searchable.uuid,
+            text: d.searchable.name
+          }
+        }
+      end
+    end
+  end
+  
   
   private
   

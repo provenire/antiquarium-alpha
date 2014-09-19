@@ -8,5 +8,9 @@ class Document < Source
   #  - document
   
   # hstore_accessor :specifics
+  
+  def process
+    # do nothing
+  end
     
 end

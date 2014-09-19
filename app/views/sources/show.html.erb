@@ -131,15 +131,8 @@
         <% else %>
           <h3>Document</h3>
         <% end %>
-        <div class="well embed-responsive" style="height: 800px;">
-          <object data="<%= @source.document.url %>" type="application/pdf" class="embed-responsive-item" height="100%">
- 
-            <p>It appears you don't have a PDF plugin for this browser.
-            No biggie... you can <a href="myfile.pdf">click here to
-            download the PDF file.</a></p>
-  
-          </object>
-        </div>
+        <%= render 'sources/pdf' %>
+
       </div>
   
     </div>

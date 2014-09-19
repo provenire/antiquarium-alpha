@@ -70,6 +70,7 @@ Rails.application.routes.draw do
   # Sources
   get '/sources/:id/history', to: 'sources#history', as: 'source_history'
   get '/sources/find_book', to: 'sources#find_book', as: 'find_book'
+  get '/sources/find_document', to: 'sources#find_document', as: 'find_document'
   resources :sources
   resources :book,     controller: 'sources', path: 'sources'
   resources :website,  controller: 'sources', path: 'sources'

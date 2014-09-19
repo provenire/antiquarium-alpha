@@ -24,9 +24,11 @@
       <% @sources.each do |s| %>
         <tr>
           <td class="col-sm-2">
-            <% if s.thumbnail.url %>
+            <% if s.is_a? Document %>
+              <span class="glyphicon glyphicon-file" style="font-size: 95px;"></span>
+            <% elsif s.thumbnail.url %>
               <%= link_to source_path(s) do %>
-                <%= image_tag s.thumbnail.url, class: 'img-responsive' %>
+                <%= image_tag s.thumbnail.list.url, class: 'img-responsive' %>
               <% end %>
             <% else %>
               <%= link_to source_path(s) do %>

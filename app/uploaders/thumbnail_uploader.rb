@@ -9,4 +9,9 @@ class ThumbnailUploader < CarrierWave::Uploader::Base
     process :eager => true
     cloudinary_transformation :width => 35, :height => 35, :crop => :fill
   end
+  
+  version :list do
+    process :eager => true
+    cloudinary_transformation :width => 95, :height => 95, :crop => :fill
+  end
 end

@@ -5,8 +5,10 @@ module UUID
   included do
     
     # Generate a UUID on create
-    before_create do |model|
-      model.uuid = SecureRandom.uuid
+    after_create do |model|
+      if !model.uuid
+        model.uuid = SecureRandom.uuid
+      end
     end
   
     # Proper REST routing

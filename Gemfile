@@ -35,7 +35,8 @@ gem 'pdfjs-rails', git: 'git://github.com/Empact/pdfjs-rails'
 
 # Files
 gem 'carrierwave'
-gem 's3_direct_upload'
+gem 'carrierwave_direct'
+gem 'aws-sdk'
 gem 'cloudinary'
 gem 'fog'
 gem 'pdfkit'
