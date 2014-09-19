@@ -17,7 +17,7 @@ class CitationsController < ApplicationController
         uuid: document_params[:document_uuid],
         name: document_params[:key].to_s.match(/^documents\/[a-f0-9-]*\/(.+?)$/)[1]
       )
-      @document.update_attributes(key: document_params[:key].to_s.match(/^documents\/[a-f0-9-]*\/(.+?)$/)[1])
+      @document.update_attributes(key: document_params[:key])
       @source = @document
       gon.document = { id: @document.uuid, text: @document.name }
     else
