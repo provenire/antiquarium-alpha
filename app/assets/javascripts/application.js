@@ -7,7 +7,7 @@
 //= require cloudinary
 //= require holder.js
 //= require select2.min.js
-//= require bootstrap-editable.min.js
+//= require bootstrap-editable.js
 //= require moment.js
 //= require ractive.js
 // require s3_direct_upload

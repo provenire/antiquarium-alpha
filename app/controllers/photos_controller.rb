@@ -44,11 +44,8 @@ class PhotosController < ApplicationController
   
   def update
     @photo = Photo.find(params[:id])
-    if @photo.update_attributes(photo_params)
-      redirect_to @photo
-    else
-      render 'edit'
-    end
+    @photo.update_attributes(params[:name] => params[:value])
+    render nothing: true
   end
 
 
@@ -65,12 +62,14 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    gon.entity_id = @photo.id
   end
   
   
   def history
     @photo = Photo.find(params[:id])
-    @photo.versions.each{|v| v.whodunnit = User.find(v.whodunnit); v.changeset.delete(:updated_at) }
+    @versions = @photo.versions.each{|v| v.whodunnit = User.find(v.whodunnit); v.changeset.delete(:updated_at) }
+    @versions.sort!{|a,b| b.created_at <=> a.created_at }
   end
   
   
