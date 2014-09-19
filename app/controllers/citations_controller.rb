@@ -11,7 +11,7 @@ class CitationsController < ApplicationController
     @source = @type.constantize.new unless params[:document_uuid]
     @citation = [@event, Citation.new]
     
-    if params[:document_uuid]
+    if params[:document_uuid] && !Document.find_by_uuid(document_params[:document_uuid])
       @uploader = nil
       @document = Document.create(
         uuid: document_params[:document_uuid],
