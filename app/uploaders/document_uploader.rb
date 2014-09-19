@@ -2,9 +2,9 @@ class DocumentUploader < CarrierWave::Uploader::Base
   include CarrierWaveDirect::Uploader
 
 
-  # def store_dir
-  #   "documents/#{model.uuid}"
-  # end
+  def store_dir
+    "documents"
+  end
   
   def will_include_content_type
     true
