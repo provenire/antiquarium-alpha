@@ -14,7 +14,10 @@ class Website < Source
     uri: :string
   
   
-  
+  # Mount Carrierwave
+  mount_uploader :document,  WebsiteUploader
+    
+    
   def process
     if self.status == 'new'
       self.generate_pdf

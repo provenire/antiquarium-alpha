@@ -14,7 +14,6 @@ class Source < ActiveRecord::Base
   
   
   # Mount Carrierwave
-  mount_uploader :document,  DocumentUploader
   mount_uploader :thumbnail, ThumbnailUploader
   
   

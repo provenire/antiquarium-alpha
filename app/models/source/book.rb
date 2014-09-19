@@ -17,6 +17,11 @@ class Book < Source
     google_id: :string,
     isbn:      :string
     
+    
+    
+  # Mount Carrierwave
+  mount_uploader :document,  DocumentUploader
+    
   
   
   # Search

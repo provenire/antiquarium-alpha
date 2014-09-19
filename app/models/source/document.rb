@@ -9,6 +9,9 @@ class Document < Source
   
   # hstore_accessor :specifics
   
+  # Mount Carrierwave
+  mount_uploader :document,  DocumentUploader
+  
   def process
     # do nothing
   end
