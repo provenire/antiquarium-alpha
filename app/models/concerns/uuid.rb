@@ -5,8 +5,8 @@ module UUID
   included do
     
     # Generate a UUID on create
-    after_create do |model|
-      if !model.uuid
+    before_create do |model|
+      if model.uuid.nil? || model.uuid.empty?
         model.uuid = SecureRandom.uuid
       end
     end
