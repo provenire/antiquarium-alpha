@@ -11,6 +11,7 @@ production:
   api_secret: NdcbZ8hwYEvUXAcdWy9AqQlgGW0
   enhance_image_tag: true
   static_image_support: true
+  secure: true
 test:
   cloud_name: antiquarium
   api_key: '371812777248624'
