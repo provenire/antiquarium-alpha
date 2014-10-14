@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Core
 gem 'rails', '4.1.4'
 gem 'pg'
+gem 'unicorn'
 gem 'hstore_accessor'
 gem 'rails_config'
 gem 'rails_admin'
