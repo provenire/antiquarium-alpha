@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
   
+  # Users
+  devise_for :users, skip: :registrations, path: ''
+  resources :users, only: [:show, :update]
+  get 'settings', to: 'users#edit',    as: :edit_user
+  get 'profile',  to: 'users#profile', as: :user_profile
+  
+  
   # Root
-  root 'home#index'
+  devise_scope :user do
+    authenticated :user do
+      root to: 'home#index'
+    end
+  
+    unauthenticated :user do
+      root to: 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
   
   
   # Admin
@@ -11,13 +26,6 @@ Rails.application.routes.draw do
   # Resque
   # mount ResqueWeb::Engine => "/resque"
   mount Resque::Server, :at => '/resque'
-  
-  
-  # Users
-  get '/profile',  to: 'users#profile',  as: 'user_profile'
-  get '/settings', to: 'users#settings', as: 'user_settings'
-  devise_for :users
-  resources :users
   
   
   # Search

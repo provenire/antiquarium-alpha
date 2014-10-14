@@ -32,6 +32,7 @@ gem 'kaminari'
 gem 'country_select'
 gem 'indefinite_article'
 gem 'pdfjs-rails', git: 'git://github.com/Empact/pdfjs-rails'
+gem 'bootstrap_flash_messages'
 
 
 # Files

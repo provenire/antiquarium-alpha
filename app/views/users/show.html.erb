@@ -1,20 +1,24 @@
 <div class="row">
   <!-- Name -->
-  <div class="col-lg-9">
-    <h1>
-      <%= @user.name %>
-    </h1>
-  </div>
-  <div class="col-lg-3">
-    <br/>
-    <div class="pull-right">
-      
-    </div>
+  <div class="col-md-9">
+    <h1><%= @user.name %></h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-3">
+    <br/>
+    <div class="well">
+      <%= semantic_navigation :settings, class: 'nav nav-sidebar' do |n| %>
+        <% n.item '<span class="glyphicon glyphicon-user"></span> Activity', user_path(@user) %>
+        
+        <% n.item '<li class="dropdown-header">Config</li>', hidden_unless: Proc.new{ @user && @user == current_user }%>
+        <% n.item '<span class="glyphicon glyphicon-cog"></span> Settings', '/settings', hidden_unless: Proc.new{ @user && @user == current_user } %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="col-sm-9">
     <h3>Recent Activity</h3>
     <%= render_activities @user.activities.order(created_at: :desc).limit(5), layout: :activity %>
   </div>

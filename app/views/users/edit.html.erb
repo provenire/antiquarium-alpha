@@ -1,0 +1,64 @@
+<div class="row">
+  <!-- Name -->
+  <div class="col-md-9">
+    <h1><%= @user.name %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <br/>
+    <div class="well">
+      <%= semantic_navigation :settings, class: 'nav nav-sidebar' do |n| %>
+        <% n.item '<span class="glyphicon glyphicon-user"></span> Activity', user_path(@user) %>
+        
+        <% n.item '<li class="dropdown-header">Config</li>', hidden_unless: Proc.new{ @user && @user == current_user }%>
+        <% n.item '<span class="glyphicon glyphicon-cog"></span> Settings', '/settings', hidden_unless: Proc.new{ @user && @user == current_user } %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="col-md-9">
+    <h3>Settings</h3>
+    
+    <%= flash_messages %>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">General</h3>
+          </div>
+          <div class="panel-body">
+            <%= form_for @user, html: { method: :put } do |f| %>
+            
+              <div class="form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, class: 'form-control' %>
+              </div>
+              
+              <div class="form-group">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: 'form-control' %>
+              </div>
+              
+              <%= f.submit 'Update', class: 'btn btn-primary pull-right' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Password</h3>
+          </div>
+          <div class="panel-body">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
