@@ -47,4 +47,24 @@ RailsAdmin.config do |config|
       end
     end
   end
+  
+  
+  config.model 'Verb' do
+    edit do
+      group :default do
+        field :display
+        field :keyword
+        field :components, :enum do
+          enum do
+            ['date', 'failed', 'details', 'primary_actor', 'secondary_actor', 'price', 'location']
+          end
+        
+          multiple do
+            true
+          end
+        end
+      end
+    end
+  end
+  
 end
