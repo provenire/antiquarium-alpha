@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   
   
   def index
+    @content    = PageContent.find_by_name('home_page')
     @activities = PublicActivity::Activity.order(created_at: :desc).limit(5)
   end
   

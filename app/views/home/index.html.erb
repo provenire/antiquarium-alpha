@@ -1,5 +1,26 @@
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-md-6">
+    <% if current_user.admin? %>
+      <div id="home_content"
+        data-escape="false"
+        data-type="textarea"
+        data-rows="10"
+        data-pk=<%= @content.id %>
+        data-url="/page_contents/<%= @content.id %>"
+        data-title="Content">
+        <%= @content.text.html_safe %>
+      </div>
+      <p>
+        <button id="edit_content" class="btn btn-xs">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </p>
+    <% else %>
+      <div><%= @content.text.html_safe %></div>
+    <% end %>
+  </div>
+    
+  <div class="col-md-6">
     <h1>Recent Activity</h1>
     <%= render_activities @activities, layout: :activity %>
   </div>

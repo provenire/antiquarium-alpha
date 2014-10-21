@@ -98,6 +98,10 @@ Rails.application.routes.draw do
   get '/workflows/extract', to: 'workflows#extract', as: 'extract_workflow'
   
   
+  # Page Content
+  resources :page_contents, only: :update
+  
+  
   # Stuff
   get '/roadmap', to: 'home#roadmap', as: 'roadmap'
   
