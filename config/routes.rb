@@ -97,4 +97,8 @@ Rails.application.routes.draw do
   get '/workflows/website', to: 'workflows#website', as: 'website_workflow'
   get '/workflows/extract', to: 'workflows#extract', as: 'extract_workflow'
   
+  
+  # Stuff
+  get '/roadmap', to: 'home#roadmap', as: 'roadmap'
+  
 end

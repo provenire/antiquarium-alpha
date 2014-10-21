@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-6">
+    <h3>Roadmap</h3>
+    
+    <% @roadmap.milestones.each do |milestone| %>
+      <h4><%= milestone.title %></h4>
+      <table class="table table-condensed">
+        <tbody>
+          <% milestone.issues.each do |i| %>
+            <tr>
+              <td><span class="glyphicon glyphicon-ok" style="visibility:<% if i.open? %>hidden;<% end %>"></span></td>
+              <td>
+                <% i.labels.each do |l| %>
+                  <span class="label label-default" style="background-color:#<%= l.color %>"><%= l.name %></span>
+                <% end %>
+              </td>
+              <td><% if i.closed? %><s><% end %>#<%= i.number %><% if i.closed? %></s><% end %></td>
+              <td><% if i.closed? %><s><% end %><%= i.title %><% if i.closed? %></s><% end %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  
+  </div>
+  
+  <div class="col-md-6">
+    <!--<h3>Known Bugs</h3>-->
+  </div>
+</div>
