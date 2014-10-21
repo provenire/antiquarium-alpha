@@ -2,7 +2,7 @@ Navigasmic.setup do |config|
   
   # Primary Nav
   config.semantic_navigation :primary do |n|
-    n.item 'Home', controller: 'home', action: 'index'
+    n.item 'Home', controller: 'home', action: 'index', highlights_on: Proc.new{ current_page?(root_path) }
     
     n.group 'Database' do
       n.item '<span class="glyphicon glyphicon-glass"></span> Artifacts',   controller: 'artifacts'
@@ -11,7 +11,7 @@ Navigasmic.setup do |config|
       n.item '<span class="glyphicon glyphicon-book"></span> Sources',      controller: 'sources'
     end
     
-    n.item 'Roadmap', controller: 'home', action: 'roadmap'
+    n.item 'Roadmap', controller: 'home', action: 'roadmap', highlights_on: '/roadmap'
     
     # n.group 'Workflows' do
     #   n.item 'Website', controller: 'workflows', action: 'website'
