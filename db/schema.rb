@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021122114) do
+ActiveRecord::Schema.define(version: 20141021134248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,16 +36,19 @@ ActiveRecord::Schema.define(version: 20141021122114) do
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 
   create_table "artifacts", force: true do |t|
-    t.uuid     "uuid",            null: false
-    t.string   "name",            null: false
-    t.string   "alternate_names",              array: true
+    t.uuid     "uuid",                            null: false
+    t.string   "name",                            null: false
+    t.string   "alternate_names",                              array: true
     t.text     "description"
     t.string   "artist"
     t.string   "dimensions"
     t.string   "date_created"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "group",           default: false
   end
+
+  add_index "artifacts", ["group"], name: "index_artifacts_on_group", using: :btree
 
   create_table "artifacts_events", id: false, force: true do |t|
     t.integer "artifact_id", null: false

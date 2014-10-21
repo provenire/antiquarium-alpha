@@ -25,6 +25,9 @@ Antiquarium.Controller["artifacts"] = {
         tokenSeparators: [","]
       }
     });
+		$('#group').editable({
+			source: [{value: 'true', text: 'true'},{value: 'false', text: 'false'}]
+		});
     $('#alternate_names').editable();
     $('#date_created').editable();
     $('#artist').editable();

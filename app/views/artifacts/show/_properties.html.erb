@@ -1,6 +1,21 @@
 <div class="col-lg-4">
     <h3>Properties</h3>
     <dl class="dl-horizontal">
+      
+        <dt>Group</dt>
+        <dd>
+            <% if editable_object? @artifact %>
+                <span id="group"
+                    data-type="select"
+                    data-pk=<%= @artifact.uuid %>
+                    data-url="/artifacts/<%= @artifact.uuid %>"
+                    data-title="Group">
+                    <%= @artifact.group %>
+                </span>
+            <% else %>
+                <%= @artifact.group %>
+            <% end %>
+        </dd>
         
         <dt>Alternate Names</dt>
         <dd>
