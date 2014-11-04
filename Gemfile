@@ -80,6 +80,7 @@ group :production do
   gem 'wkhtmltopdf-heroku', git: 'git://github.com/pallymore/wkhtmltopdf-heroku'
   gem 'rails_12factor'
   gem 'heroku_rails_deflate'
+  gem 'newrelic_rpm'
 end
 
 ruby "2.1.1"
