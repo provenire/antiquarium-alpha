@@ -104,5 +104,6 @@ Rails.application.routes.draw do
   
   # Stuff
   get '/roadmap', to: 'home#roadmap', as: 'roadmap'
+  get '/tasks',   to: 'home#tasks',   as: 'tasks'
   
 end

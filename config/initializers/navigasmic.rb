@@ -11,6 +11,7 @@ Navigasmic.setup do |config|
       n.item '<span class="glyphicon glyphicon-book"></span> Sources',      controller: 'sources'
     end
     
+    n.item 'Tasks',   controller: 'home', action: 'tasks',   highlights_on: '/tasks'
     n.item 'Roadmap', controller: 'home', action: 'roadmap', highlights_on: '/roadmap'
     
     # n.group 'Workflows' do

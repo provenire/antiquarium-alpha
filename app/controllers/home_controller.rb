@@ -12,4 +12,8 @@ class HomeController < ApplicationController
     @roadmap = Roadmap.new(@issues)
   end
   
+  def tasks
+    @doc_url = 'https://docs.google.com/spreadsheet/ccc?key=0AoOefhuaf-WfdDlLbnZqYjh5dU9CRE5rSmZJa3FfVHc&usp=sharing'
+  end
+  
 end
