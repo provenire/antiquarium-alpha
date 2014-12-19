@@ -9,6 +9,7 @@ gem 'hstore_accessor'
 gem 'rails_config'
 gem 'rails_admin'
 gem 'figaro', '~> 1.0.0.rc1'
+gem 'yaml_db'
 
 
 # Users
